@@ -2,6 +2,62 @@
 
 An image captioning project built with an EfficientNet-B4 image encoder, Bahdanau attention, and an LSTM decoder. It can train on MS COCO, caption an image from the command line, or run an interactive Gradio app with optional attention visualizations.
 
+## Quickstart: run the pretrained project
+
+You can try the pretrained model without downloading COCO or training. These steps are for Windows PowerShell.
+
+### 1. Clone the code
+
+```powershell
+git clone https://github.com/yokeswarans/Image-Captioning-With-Attention.git
+cd Image-Captioning-With-Attention
+```
+
+### 2. Install Python dependencies
+
+Python 3.10 or later is recommended. Create a virtual environment and install the project requirements:
+
+```powershell
+py -3 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+```
+
+If PowerShell blocks environment activation, run the commands using `.\.venv\Scripts\python.exe` instead of `python`. For CUDA, install the PyTorch and torchvision builds that match your system by following the [PyTorch installation selector](https://pytorch.org/get-started/locally/).
+
+### 3. Download the pretrained weights from Hugging Face
+
+The checkpoint is hosted separately from the source code because it is larger than GitHub's per-file limit. Download it into the `checkpoints` directory:
+
+```powershell
+New-Item -ItemType Directory -Force checkpoints | Out-Null
+curl.exe -L "https://huggingface.co/Yoki051202/Image-captioning-weights/resolve/main/best_model.pth?download=true" -o "checkpoints\best_model.pth"
+```
+
+The downloaded file should be named `best_model.pth` and be approximately 424 MiB. Check that the download completed before continuing:
+
+```powershell
+Get-Item checkpoints\best_model.pth | Select-Object Name, Length
+```
+
+### 4. Launch the web app
+
+```powershell
+python app.py
+```
+
+Open the local URL printed in the terminal (normally <http://127.0.0.1:7860>). Upload an image or provide an image URL, select a beam width, and press **Generate caption**. Attention overlays and videos are optional. The app loads `checkpoints\best_model.pth` automatically.
+
+To try the command-line interface instead, replace `path\to\your-image.jpg` with an image file:
+
+```powershell
+python predict.py --image "path\to\your-image.jpg"
+python predict.py --image "path\to\your-image.jpg" --beam_size 5 --visualize
+```
+
+The caption is printed in the terminal. With `--visualize`, attention and caption images are saved under `outputs\predictions\`.
+
 ## Features
 
 - EfficientNet-B4 encoder producing a 7 × 7 spatial feature grid.
