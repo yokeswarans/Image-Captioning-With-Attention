@@ -1,0 +1,14 @@
+torch>=2.0
+torchvision>=0.15
+numpy
+Pillow
+matplotlib
+scipy
+nltk
+rouge-score
+pycocoevalcap
+gradio>=4.0
+imageio
+imageio-ffmpeg
+pycocoevalcap
+pandas

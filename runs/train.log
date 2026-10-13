@@ -1,0 +1,1291 @@
+2026-07-31 13:05:41 | INFO | ========================================================================
+2026-07-31 13:05:41 | INFO | Image Captioning — Phase 2 training started
+2026-07-31 13:05:41 | INFO | PID=4084546  device=cuda  patience=10  epochs=80  batch_size=32  amp=True
+2026-07-31 13:05:41 | INFO | GPU: NVIDIA A16
+2026-07-31 13:05:41 | INFO | Config: {'data_root': 'data/coco', 'train_images': 'data/coco/train2017', 'val_images': 'data/coco/val2017', 'train_ann': 'data/coco/annotations/captions_train2017.json', 'val_ann': 'data/coco/annotations/captions_val2017.json', 'cache_dir': 'data/coco/cache', 'checkpoint_dir': 'checkpoints', 'output_dir': 'outputs/predictions', 'runs_dir': 'runs', 'min_word_freq': 5, 'max_caption_len': 50, 'encoder_name': 'efficientnet_b4', 'encoder_dim': 1792, 'attention_dim': 512, 'embed_dim': 512, 'decoder_dim': 512, 'dropout': 0.5, 'fine_tune_encoder_from_epoch': 10, 'batch_size': 32, 'epochs': 80, 'lr_encoder': 0.0001, 'lr_decoder': 0.0004, 'weight_decay': 1e-05, 'grad_clip': 5.0, 'teacher_forcing_ratio': 1.0, 'scheduled_sampling_decay': 0.98, 'early_stopping_patience': 10, 'amp': True, 'num_workers': 4, 'checkpoint_every_n_batches': 5000, 'log_every': 1000, 'val_metric_batches': 50, 'beam_sizes': (3, 5, 7, 10), 'device': 'cuda'}
+2026-07-31 13:05:41 | INFO | Monitor remotely:
+2026-07-31 13:05:41 | INFO |   tail -f runs/train.log
+2026-07-31 13:05:41 | INFO |   cat runs/STATUS
+2026-07-31 13:05:41 | INFO | ========================================================================
+2026-07-31 13:05:41 | INFO | [cache hit] loading cleaned captions for train
+2026-07-31 13:05:42 | INFO | [cache hit] loading vocab.pkl
+2026-07-31 13:05:42 | INFO | [cache hit] loading cleaned captions for val
+2026-07-31 13:05:43 | INFO | Vocab size: 10307
+2026-07-31 13:05:44 | INFO | Train samples (image,caption pairs): 591753
+2026-07-31 13:05:44 | INFO | Val samples: 25014
+2026-07-31 13:05:44 | INFO | Batches per epoch: 18492
+2026-07-31 13:05:44 | WARNING | --resume requested but checkpoints/last_model.pth not found; starting fresh
+2026-07-31 13:05:44 | INFO | ------------------------------------------------------------------------
+2026-07-31 13:05:44 | INFO | Starting epoch 0 / 79  (tf_ratio=1.000)
+2026-07-31 13:08:49 | INFO | EPOCH 0 | BATCH 1000/18492 | loss=4.8344 | avg_loss=5.3927 | batch_time=0.18s | ETA_epoch=3233s
+2026-07-31 13:11:53 | INFO | EPOCH 0 | BATCH 2000/18492 | loss=4.4873 | avg_loss=5.0268 | batch_time=0.19s | ETA_epoch=3059s
+2026-07-31 13:14:58 | INFO | EPOCH 0 | BATCH 3000/18492 | loss=4.1102 | avg_loss=4.8372 | batch_time=0.17s | ETA_epoch=2664s
+2026-07-31 13:18:02 | INFO | EPOCH 0 | BATCH 4000/18492 | loss=4.3217 | avg_loss=4.7131 | batch_time=0.18s | ETA_epoch=2677s
+2026-07-31 13:21:06 | INFO | EPOCH 0 | BATCH 5000/18492 | loss=4.3295 | avg_loss=4.6246 | batch_time=0.18s | ETA_epoch=2389s
+2026-07-31 13:21:07 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 13:24:11 | INFO | EPOCH 0 | BATCH 6000/18492 | loss=3.9135 | avg_loss=4.5580 | batch_time=0.18s | ETA_epoch=2232s
+2026-07-31 13:27:16 | INFO | EPOCH 0 | BATCH 7000/18492 | loss=4.4852 | avg_loss=4.5050 | batch_time=0.18s | ETA_epoch=2093s
+2026-07-31 13:30:20 | INFO | EPOCH 0 | BATCH 8000/18492 | loss=4.0501 | avg_loss=4.4611 | batch_time=0.18s | ETA_epoch=1839s
+2026-07-31 13:33:25 | INFO | EPOCH 0 | BATCH 9000/18492 | loss=4.6123 | avg_loss=4.4259 | batch_time=0.18s | ETA_epoch=1753s
+2026-07-31 13:36:30 | INFO | EPOCH 0 | BATCH 10000/18492 | loss=3.9246 | avg_loss=4.3943 | batch_time=0.17s | ETA_epoch=1465s
+2026-07-31 13:36:31 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 13:39:34 | INFO | EPOCH 0 | BATCH 11000/18492 | loss=3.8443 | avg_loss=4.3669 | batch_time=0.18s | ETA_epoch=1337s
+2026-07-31 13:42:39 | INFO | EPOCH 0 | BATCH 12000/18492 | loss=4.1880 | avg_loss=4.3431 | batch_time=0.17s | ETA_epoch=1133s
+2026-07-31 13:45:44 | INFO | EPOCH 0 | BATCH 13000/18492 | loss=3.8688 | avg_loss=4.3230 | batch_time=0.17s | ETA_epoch=924s
+2026-07-31 13:48:48 | INFO | EPOCH 0 | BATCH 14000/18492 | loss=4.2595 | avg_loss=4.3034 | batch_time=0.20s | ETA_epoch=906s
+2026-07-31 13:51:52 | INFO | EPOCH 0 | BATCH 15000/18492 | loss=4.2815 | avg_loss=4.2874 | batch_time=0.18s | ETA_epoch=623s
+2026-07-31 13:51:53 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 13:54:56 | INFO | EPOCH 0 | BATCH 16000/18492 | loss=4.1095 | avg_loss=4.2717 | batch_time=0.18s | ETA_epoch=444s
+2026-07-31 13:58:01 | INFO | EPOCH 0 | BATCH 17000/18492 | loss=4.0795 | avg_loss=4.2579 | batch_time=0.18s | ETA_epoch=274s
+2026-07-31 14:01:05 | INFO | EPOCH 0 | BATCH 18000/18492 | loss=4.0627 | avg_loss=4.2452 | batch_time=0.19s | ETA_epoch=94s
+2026-07-31 14:02:36 | INFO | EPOCH 0 | BATCH 18492/18492 | loss=3.9269 | avg_loss=4.2394 | batch_time=0.17s | ETA_epoch=0s
+2026-07-31 14:02:36 | INFO | Epoch 0 train done | train_loss=4.2394 | time=3411.9s
+2026-07-31 14:02:36 | INFO | Computing validation loss ...
+2026-07-31 14:02:43 | INFO | val_loss=4.0149
+2026-07-31 14:02:43 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 14:03:06 | INFO |   BLEU-1 = 0.6646
+2026-07-31 14:03:06 | INFO |   BLEU-2 = 0.4812
+2026-07-31 14:03:06 | INFO |   BLEU-3 = 0.3263
+2026-07-31 14:03:06 | INFO |   BLEU-4 = 0.2289
+2026-07-31 14:03:06 | INFO |   METEOR = 0.4200
+2026-07-31 14:03:06 | INFO |   ROUGE-L = 0.3681
+2026-07-31 14:03:06 | INFO |   CIDEr-D = 0.6538
+2026-07-31 14:03:06 | INFO | ★ New best BLEU-4: 0.2289
+2026-07-31 14:03:07 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 14:03:07 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-07-31 14:03:08 | INFO | EPOCH COMPLETE 0 | train_loss=4.2394 val_loss=4.0149 BLEU-4=0.2289 (best=0.2289) | graphs updated in runs/
+2026-07-31 14:03:08 | INFO | ------------------------------------------------------------------------
+2026-07-31 14:03:08 | INFO | Starting epoch 1 / 79  (tf_ratio=0.980)
+2026-07-31 14:06:13 | INFO | EPOCH 1 | BATCH 1000/18492 | loss=3.6931 | avg_loss=3.9906 | batch_time=0.19s | ETA_epoch=3246s
+2026-07-31 14:09:17 | INFO | EPOCH 1 | BATCH 2000/18492 | loss=3.9768 | avg_loss=3.9900 | batch_time=0.18s | ETA_epoch=2908s
+2026-07-31 14:12:22 | INFO | EPOCH 1 | BATCH 3000/18492 | loss=3.8206 | avg_loss=3.9893 | batch_time=0.19s | ETA_epoch=2933s
+2026-07-31 14:15:27 | INFO | EPOCH 1 | BATCH 4000/18492 | loss=4.2448 | avg_loss=3.9928 | batch_time=0.20s | ETA_epoch=2862s
+2026-07-31 14:18:32 | INFO | EPOCH 1 | BATCH 5000/18492 | loss=3.8703 | avg_loss=3.9928 | batch_time=0.19s | ETA_epoch=2588s
+2026-07-31 14:18:32 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 14:21:37 | INFO | EPOCH 1 | BATCH 6000/18492 | loss=4.2630 | avg_loss=3.9930 | batch_time=0.20s | ETA_epoch=2509s
+2026-07-31 14:24:42 | INFO | EPOCH 1 | BATCH 7000/18492 | loss=3.9906 | avg_loss=3.9926 | batch_time=0.18s | ETA_epoch=2045s
+2026-07-31 14:27:46 | INFO | EPOCH 1 | BATCH 8000/18492 | loss=4.0138 | avg_loss=3.9902 | batch_time=0.19s | ETA_epoch=2012s
+2026-07-31 14:30:50 | INFO | EPOCH 1 | BATCH 9000/18492 | loss=4.1223 | avg_loss=3.9887 | batch_time=0.19s | ETA_epoch=1825s
+2026-07-31 14:33:54 | INFO | EPOCH 1 | BATCH 10000/18492 | loss=4.0166 | avg_loss=3.9877 | batch_time=0.20s | ETA_epoch=1733s
+2026-07-31 14:33:55 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 14:37:00 | INFO | EPOCH 1 | BATCH 11000/18492 | loss=4.3748 | avg_loss=3.9874 | batch_time=0.22s | ETA_epoch=1619s
+2026-07-31 14:40:04 | INFO | EPOCH 1 | BATCH 12000/18492 | loss=3.9871 | avg_loss=3.9859 | batch_time=0.19s | ETA_epoch=1216s
+2026-07-31 14:43:09 | INFO | EPOCH 1 | BATCH 13000/18492 | loss=3.6671 | avg_loss=3.9845 | batch_time=0.18s | ETA_epoch=993s
+2026-07-31 14:46:13 | INFO | EPOCH 1 | BATCH 14000/18492 | loss=4.4522 | avg_loss=3.9830 | batch_time=0.18s | ETA_epoch=813s
+2026-07-31 14:49:18 | INFO | EPOCH 1 | BATCH 15000/18492 | loss=3.8200 | avg_loss=3.9823 | batch_time=0.18s | ETA_epoch=622s
+2026-07-31 14:49:19 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 14:52:22 | INFO | EPOCH 1 | BATCH 16000/18492 | loss=4.2374 | avg_loss=3.9810 | batch_time=0.19s | ETA_epoch=473s
+2026-07-31 14:55:26 | INFO | EPOCH 1 | BATCH 17000/18492 | loss=4.0977 | avg_loss=3.9798 | batch_time=0.18s | ETA_epoch=276s
+2026-07-31 14:58:31 | INFO | EPOCH 1 | BATCH 18000/18492 | loss=4.1918 | avg_loss=3.9786 | batch_time=0.17s | ETA_epoch=85s
+2026-07-31 15:00:02 | INFO | EPOCH 1 | BATCH 18492/18492 | loss=3.8517 | avg_loss=3.9782 | batch_time=0.23s | ETA_epoch=0s
+2026-07-31 15:00:02 | INFO | Epoch 1 train done | train_loss=3.9782 | time=3414.0s
+2026-07-31 15:00:02 | INFO | Computing validation loss ...
+2026-07-31 15:00:09 | INFO | val_loss=3.9340
+2026-07-31 15:00:09 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 15:00:29 | INFO |   BLEU-1 = 0.6673
+2026-07-31 15:00:29 | INFO |   BLEU-2 = 0.4884
+2026-07-31 15:00:29 | INFO |   BLEU-3 = 0.3369
+2026-07-31 15:00:29 | INFO |   BLEU-4 = 0.2388
+2026-07-31 15:00:29 | INFO |   METEOR = 0.4249
+2026-07-31 15:00:29 | INFO |   ROUGE-L = 0.3733
+2026-07-31 15:00:29 | INFO |   CIDEr-D = 0.6737
+2026-07-31 15:00:29 | INFO | ★ New best BLEU-4: 0.2388
+2026-07-31 15:00:30 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 15:00:30 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-07-31 15:00:31 | INFO | EPOCH COMPLETE 1 | train_loss=3.9782 val_loss=3.9340 BLEU-4=0.2388 (best=0.2388) | graphs updated in runs/
+2026-07-31 15:00:31 | INFO | ------------------------------------------------------------------------
+2026-07-31 15:00:31 | INFO | Starting epoch 2 / 79  (tf_ratio=0.960)
+2026-07-31 15:03:36 | INFO | EPOCH 2 | BATCH 1000/18492 | loss=4.1788 | avg_loss=3.9504 | batch_time=0.19s | ETA_epoch=3239s
+2026-07-31 15:06:41 | INFO | EPOCH 2 | BATCH 2000/18492 | loss=3.9784 | avg_loss=3.9444 | batch_time=0.17s | ETA_epoch=2885s
+2026-07-31 15:09:45 | INFO | EPOCH 2 | BATCH 3000/18492 | loss=3.7408 | avg_loss=3.9432 | batch_time=0.18s | ETA_epoch=2762s
+2026-07-31 15:12:49 | INFO | EPOCH 2 | BATCH 4000/18492 | loss=3.5763 | avg_loss=3.9442 | batch_time=0.17s | ETA_epoch=2485s
+2026-07-31 15:15:55 | INFO | EPOCH 2 | BATCH 5000/18492 | loss=3.9585 | avg_loss=3.9461 | batch_time=0.20s | ETA_epoch=2699s
+2026-07-31 15:15:56 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 15:19:00 | INFO | EPOCH 2 | BATCH 6000/18492 | loss=4.3203 | avg_loss=3.9457 | batch_time=0.17s | ETA_epoch=2105s
+2026-07-31 15:22:04 | INFO | EPOCH 2 | BATCH 7000/18492 | loss=3.6618 | avg_loss=3.9444 | batch_time=0.18s | ETA_epoch=2055s
+2026-07-31 15:25:08 | INFO | EPOCH 2 | BATCH 8000/18492 | loss=3.8722 | avg_loss=3.9429 | batch_time=0.18s | ETA_epoch=1910s
+2026-07-31 15:28:13 | INFO | EPOCH 2 | BATCH 9000/18492 | loss=4.2081 | avg_loss=3.9431 | batch_time=0.17s | ETA_epoch=1660s
+2026-07-31 15:31:18 | INFO | EPOCH 2 | BATCH 10000/18492 | loss=4.5215 | avg_loss=3.9434 | batch_time=0.22s | ETA_epoch=1832s
+2026-07-31 15:31:18 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 15:34:23 | INFO | EPOCH 2 | BATCH 11000/18492 | loss=3.9141 | avg_loss=3.9449 | batch_time=0.18s | ETA_epoch=1332s
+2026-07-31 15:37:28 | INFO | EPOCH 2 | BATCH 12000/18492 | loss=3.5823 | avg_loss=3.9450 | batch_time=0.17s | ETA_epoch=1097s
+2026-07-31 15:40:33 | INFO | EPOCH 2 | BATCH 13000/18492 | loss=4.0007 | avg_loss=3.9449 | batch_time=0.21s | ETA_epoch=1164s
+2026-07-31 15:43:38 | INFO | EPOCH 2 | BATCH 14000/18492 | loss=4.3586 | avg_loss=3.9443 | batch_time=0.19s | ETA_epoch=873s
+2026-07-31 15:46:43 | INFO | EPOCH 2 | BATCH 15000/18492 | loss=4.0715 | avg_loss=3.9449 | batch_time=0.19s | ETA_epoch=672s
+2026-07-31 15:46:43 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 15:49:49 | INFO | EPOCH 2 | BATCH 16000/18492 | loss=3.9357 | avg_loss=3.9461 | batch_time=0.18s | ETA_epoch=444s
+2026-07-31 15:52:53 | INFO | EPOCH 2 | BATCH 17000/18492 | loss=3.8604 | avg_loss=3.9453 | batch_time=0.19s | ETA_epoch=282s
+2026-07-31 15:55:58 | INFO | EPOCH 2 | BATCH 18000/18492 | loss=3.7340 | avg_loss=3.9461 | batch_time=0.17s | ETA_epoch=86s
+2026-07-31 15:57:29 | INFO | EPOCH 2 | BATCH 18492/18492 | loss=4.0859 | avg_loss=3.9461 | batch_time=0.18s | ETA_epoch=0s
+2026-07-31 15:57:29 | INFO | Epoch 2 train done | train_loss=3.9461 | time=3418.3s
+2026-07-31 15:57:29 | INFO | Computing validation loss ...
+2026-07-31 15:57:35 | INFO | val_loss=3.9013
+2026-07-31 15:57:35 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 15:57:56 | INFO |   BLEU-1 = 0.6745
+2026-07-31 15:57:56 | INFO |   BLEU-2 = 0.4964
+2026-07-31 15:57:56 | INFO |   BLEU-3 = 0.3362
+2026-07-31 15:57:56 | INFO |   BLEU-4 = 0.2364
+2026-07-31 15:57:56 | INFO |   METEOR = 0.4267
+2026-07-31 15:57:56 | INFO |   ROUGE-L = 0.3741
+2026-07-31 15:57:56 | INFO |   CIDEr-D = 0.6772
+2026-07-31 15:57:56 | INFO | No BLEU-4 improvement (1 / 10 patience)
+2026-07-31 15:57:57 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 15:57:57 | INFO | EPOCH COMPLETE 2 | train_loss=3.9461 val_loss=3.9013 BLEU-4=0.2364 (best=0.2388) | graphs updated in runs/
+2026-07-31 15:57:57 | INFO | ------------------------------------------------------------------------
+2026-07-31 15:57:57 | INFO | Starting epoch 3 / 79  (tf_ratio=0.941)
+2026-07-31 16:01:02 | INFO | EPOCH 3 | BATCH 1000/18492 | loss=3.9728 | avg_loss=3.9228 | batch_time=0.20s | ETA_epoch=3444s
+2026-07-31 16:04:08 | INFO | EPOCH 3 | BATCH 2000/18492 | loss=4.0687 | avg_loss=3.9255 | batch_time=0.18s | ETA_epoch=2896s
+2026-07-31 16:07:12 | INFO | EPOCH 3 | BATCH 3000/18492 | loss=3.7464 | avg_loss=3.9235 | batch_time=0.18s | ETA_epoch=2859s
+2026-07-31 16:10:18 | INFO | EPOCH 3 | BATCH 4000/18492 | loss=4.3304 | avg_loss=3.9244 | batch_time=0.20s | ETA_epoch=2832s
+2026-07-31 16:13:22 | INFO | EPOCH 3 | BATCH 5000/18492 | loss=4.2766 | avg_loss=3.9263 | batch_time=0.19s | ETA_epoch=2576s
+2026-07-31 16:13:23 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 16:16:28 | INFO | EPOCH 3 | BATCH 6000/18492 | loss=3.9715 | avg_loss=3.9301 | batch_time=0.18s | ETA_epoch=2204s
+2026-07-31 16:19:32 | INFO | EPOCH 3 | BATCH 7000/18492 | loss=3.8204 | avg_loss=3.9322 | batch_time=0.18s | ETA_epoch=2063s
+2026-07-31 16:22:37 | INFO | EPOCH 3 | BATCH 8000/18492 | loss=3.8518 | avg_loss=3.9345 | batch_time=0.18s | ETA_epoch=1857s
+2026-07-31 16:25:42 | INFO | EPOCH 3 | BATCH 9000/18492 | loss=4.1119 | avg_loss=3.9340 | batch_time=0.18s | ETA_epoch=1665s
+2026-07-31 16:28:48 | INFO | EPOCH 3 | BATCH 10000/18492 | loss=3.6738 | avg_loss=3.9358 | batch_time=0.18s | ETA_epoch=1491s
+2026-07-31 16:28:49 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 16:31:54 | INFO | EPOCH 3 | BATCH 11000/18492 | loss=3.7984 | avg_loss=3.9377 | batch_time=0.18s | ETA_epoch=1336s
+2026-07-31 16:34:59 | INFO | EPOCH 3 | BATCH 12000/18492 | loss=4.4199 | avg_loss=3.9400 | batch_time=0.19s | ETA_epoch=1247s
+2026-07-31 16:38:03 | INFO | EPOCH 3 | BATCH 13000/18492 | loss=3.6329 | avg_loss=3.9393 | batch_time=0.18s | ETA_epoch=980s
+2026-07-31 16:41:09 | INFO | EPOCH 3 | BATCH 14000/18492 | loss=3.4096 | avg_loss=3.9398 | batch_time=0.17s | ETA_epoch=769s
+2026-07-31 16:44:14 | INFO | EPOCH 3 | BATCH 15000/18492 | loss=4.6277 | avg_loss=3.9415 | batch_time=0.23s | ETA_epoch=794s
+2026-07-31 16:44:15 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 16:47:20 | INFO | EPOCH 3 | BATCH 16000/18492 | loss=3.8453 | avg_loss=3.9428 | batch_time=0.18s | ETA_epoch=445s
+2026-07-31 16:50:25 | INFO | EPOCH 3 | BATCH 17000/18492 | loss=3.9100 | avg_loss=3.9429 | batch_time=0.17s | ETA_epoch=258s
+2026-07-31 16:53:29 | INFO | EPOCH 3 | BATCH 18000/18492 | loss=4.1212 | avg_loss=3.9433 | batch_time=0.17s | ETA_epoch=85s
+2026-07-31 16:55:00 | INFO | EPOCH 3 | BATCH 18492/18492 | loss=3.3613 | avg_loss=3.9433 | batch_time=0.23s | ETA_epoch=0s
+2026-07-31 16:55:00 | INFO | Epoch 3 train done | train_loss=3.9433 | time=3423.3s
+2026-07-31 16:55:00 | INFO | Computing validation loss ...
+2026-07-31 16:55:07 | INFO | val_loss=3.8863
+2026-07-31 16:55:07 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 16:55:27 | INFO |   BLEU-1 = 0.6822
+2026-07-31 16:55:27 | INFO |   BLEU-2 = 0.5034
+2026-07-31 16:55:27 | INFO |   BLEU-3 = 0.3455
+2026-07-31 16:55:27 | INFO |   BLEU-4 = 0.2458
+2026-07-31 16:55:27 | INFO |   METEOR = 0.4365
+2026-07-31 16:55:27 | INFO |   ROUGE-L = 0.3902
+2026-07-31 16:55:27 | INFO |   CIDEr-D = 0.7443
+2026-07-31 16:55:27 | INFO | ★ New best BLEU-4: 0.2458
+2026-07-31 16:55:28 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 16:55:28 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-07-31 16:55:29 | INFO | EPOCH COMPLETE 3 | train_loss=3.9433 val_loss=3.8863 BLEU-4=0.2458 (best=0.2458) | graphs updated in runs/
+2026-07-31 16:55:29 | INFO | ------------------------------------------------------------------------
+2026-07-31 16:55:29 | INFO | Starting epoch 4 / 79  (tf_ratio=0.922)
+2026-07-31 16:58:33 | INFO | EPOCH 4 | BATCH 1000/18492 | loss=3.6095 | avg_loss=3.9306 | batch_time=0.18s | ETA_epoch=3120s
+2026-07-31 17:01:39 | INFO | EPOCH 4 | BATCH 2000/18492 | loss=4.0767 | avg_loss=3.9380 | batch_time=0.19s | ETA_epoch=3161s
+2026-07-31 17:04:44 | INFO | EPOCH 4 | BATCH 3000/18492 | loss=4.3879 | avg_loss=3.9409 | batch_time=0.18s | ETA_epoch=2816s
+2026-07-31 17:07:49 | INFO | EPOCH 4 | BATCH 4000/18492 | loss=3.9529 | avg_loss=3.9409 | batch_time=0.19s | ETA_epoch=2726s
+2026-07-31 17:10:54 | INFO | EPOCH 4 | BATCH 5000/18492 | loss=3.6553 | avg_loss=3.9423 | batch_time=0.18s | ETA_epoch=2447s
+2026-07-31 17:10:55 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 17:14:01 | INFO | EPOCH 4 | BATCH 6000/18492 | loss=3.6635 | avg_loss=3.9441 | batch_time=0.18s | ETA_epoch=2186s
+2026-07-31 17:17:08 | INFO | EPOCH 4 | BATCH 7000/18492 | loss=4.3830 | avg_loss=3.9463 | batch_time=0.19s | ETA_epoch=2224s
+2026-07-31 17:20:12 | INFO | EPOCH 4 | BATCH 8000/18492 | loss=3.5775 | avg_loss=3.9458 | batch_time=0.18s | ETA_epoch=1850s
+2026-07-31 17:23:19 | INFO | EPOCH 4 | BATCH 9000/18492 | loss=3.8813 | avg_loss=3.9457 | batch_time=0.18s | ETA_epoch=1719s
+2026-07-31 17:26:22 | INFO | EPOCH 4 | BATCH 10000/18492 | loss=3.9583 | avg_loss=3.9455 | batch_time=0.20s | ETA_epoch=1659s
+2026-07-31 17:26:23 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 17:29:28 | INFO | EPOCH 4 | BATCH 11000/18492 | loss=3.9138 | avg_loss=3.9462 | batch_time=0.19s | ETA_epoch=1426s
+2026-07-31 17:32:33 | INFO | EPOCH 4 | BATCH 12000/18492 | loss=4.0407 | avg_loss=3.9474 | batch_time=0.19s | ETA_epoch=1235s
+2026-07-31 17:35:39 | INFO | EPOCH 4 | BATCH 13000/18492 | loss=4.0320 | avg_loss=3.9486 | batch_time=0.19s | ETA_epoch=1034s
+2026-07-31 17:38:45 | INFO | EPOCH 4 | BATCH 14000/18492 | loss=3.8958 | avg_loss=3.9506 | batch_time=0.18s | ETA_epoch=810s
+2026-07-31 17:41:51 | INFO | EPOCH 4 | BATCH 15000/18492 | loss=4.0514 | avg_loss=3.9508 | batch_time=0.19s | ETA_epoch=653s
+2026-07-31 17:41:51 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 17:44:56 | INFO | EPOCH 4 | BATCH 16000/18492 | loss=3.7463 | avg_loss=3.9511 | batch_time=0.18s | ETA_epoch=445s
+2026-07-31 17:48:02 | INFO | EPOCH 4 | BATCH 17000/18492 | loss=3.4686 | avg_loss=3.9531 | batch_time=0.17s | ETA_epoch=250s
+2026-07-31 17:51:07 | INFO | EPOCH 4 | BATCH 18000/18492 | loss=3.7715 | avg_loss=3.9534 | batch_time=0.18s | ETA_epoch=86s
+2026-07-31 17:52:38 | INFO | EPOCH 4 | BATCH 18492/18492 | loss=4.2607 | avg_loss=3.9539 | batch_time=0.17s | ETA_epoch=0s
+2026-07-31 17:52:38 | INFO | Epoch 4 train done | train_loss=3.9539 | time=3429.8s
+2026-07-31 17:52:38 | INFO | Computing validation loss ...
+2026-07-31 17:52:45 | INFO | val_loss=3.8933
+2026-07-31 17:52:45 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 17:53:05 | INFO |   BLEU-1 = 0.6885
+2026-07-31 17:53:05 | INFO |   BLEU-2 = 0.5150
+2026-07-31 17:53:05 | INFO |   BLEU-3 = 0.3541
+2026-07-31 17:53:05 | INFO |   BLEU-4 = 0.2520
+2026-07-31 17:53:05 | INFO |   METEOR = 0.4481
+2026-07-31 17:53:05 | INFO |   ROUGE-L = 0.3759
+2026-07-31 17:53:05 | INFO |   CIDEr-D = 0.7355
+2026-07-31 17:53:05 | INFO | ★ New best BLEU-4: 0.2520
+2026-07-31 17:53:06 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 17:53:06 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-07-31 17:53:07 | INFO | EPOCH COMPLETE 4 | train_loss=3.9539 val_loss=3.8933 BLEU-4=0.2520 (best=0.2520) | graphs updated in runs/
+2026-07-31 17:53:07 | INFO | ------------------------------------------------------------------------
+2026-07-31 17:53:07 | INFO | Starting epoch 5 / 79  (tf_ratio=0.904)
+2026-07-31 17:56:13 | INFO | EPOCH 5 | BATCH 1000/18492 | loss=3.6556 | avg_loss=3.9460 | batch_time=0.20s | ETA_epoch=3500s
+2026-07-31 17:59:18 | INFO | EPOCH 5 | BATCH 2000/18492 | loss=4.2112 | avg_loss=3.9466 | batch_time=0.17s | ETA_epoch=2804s
+2026-07-31 18:02:24 | INFO | EPOCH 5 | BATCH 3000/18492 | loss=3.7888 | avg_loss=3.9496 | batch_time=0.19s | ETA_epoch=2878s
+2026-07-31 18:05:29 | INFO | EPOCH 5 | BATCH 4000/18492 | loss=4.1251 | avg_loss=3.9501 | batch_time=0.17s | ETA_epoch=2535s
+2026-07-31 18:08:34 | INFO | EPOCH 5 | BATCH 5000/18492 | loss=3.9769 | avg_loss=3.9539 | batch_time=0.19s | ETA_epoch=2573s
+2026-07-31 18:08:35 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 18:11:40 | INFO | EPOCH 5 | BATCH 6000/18492 | loss=3.4800 | avg_loss=3.9563 | batch_time=0.18s | ETA_epoch=2223s
+2026-07-31 18:14:45 | INFO | EPOCH 5 | BATCH 7000/18492 | loss=3.6801 | avg_loss=3.9565 | batch_time=0.20s | ETA_epoch=2278s
+2026-07-31 18:17:52 | INFO | EPOCH 5 | BATCH 8000/18492 | loss=3.9227 | avg_loss=3.9582 | batch_time=0.20s | ETA_epoch=2060s
+2026-07-31 18:20:57 | INFO | EPOCH 5 | BATCH 9000/18492 | loss=3.9123 | avg_loss=3.9603 | batch_time=0.19s | ETA_epoch=1787s
+2026-07-31 18:24:03 | INFO | EPOCH 5 | BATCH 10000/18492 | loss=4.2558 | avg_loss=3.9614 | batch_time=0.18s | ETA_epoch=1508s
+2026-07-31 18:24:04 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 18:27:09 | INFO | EPOCH 5 | BATCH 11000/18492 | loss=4.1137 | avg_loss=3.9627 | batch_time=0.18s | ETA_epoch=1353s
+2026-07-31 18:30:15 | INFO | EPOCH 5 | BATCH 12000/18492 | loss=4.1431 | avg_loss=3.9640 | batch_time=0.18s | ETA_epoch=1171s
+2026-07-31 18:33:21 | INFO | EPOCH 5 | BATCH 13000/18492 | loss=3.9762 | avg_loss=3.9649 | batch_time=0.19s | ETA_epoch=1020s
+2026-07-31 18:36:27 | INFO | EPOCH 5 | BATCH 14000/18492 | loss=4.2532 | avg_loss=3.9660 | batch_time=0.18s | ETA_epoch=787s
+2026-07-31 18:39:32 | INFO | EPOCH 5 | BATCH 15000/18492 | loss=4.2275 | avg_loss=3.9665 | batch_time=0.18s | ETA_epoch=619s
+2026-07-31 18:39:33 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 18:42:37 | INFO | EPOCH 5 | BATCH 16000/18492 | loss=3.6033 | avg_loss=3.9660 | batch_time=0.18s | ETA_epoch=451s
+2026-07-31 18:45:43 | INFO | EPOCH 5 | BATCH 17000/18492 | loss=3.6692 | avg_loss=3.9665 | batch_time=0.19s | ETA_epoch=282s
+2026-07-31 18:48:47 | INFO | EPOCH 5 | BATCH 18000/18492 | loss=3.8770 | avg_loss=3.9665 | batch_time=0.20s | ETA_epoch=97s
+2026-07-31 18:50:19 | INFO | EPOCH 5 | BATCH 18492/18492 | loss=4.1555 | avg_loss=3.9677 | batch_time=0.19s | ETA_epoch=0s
+2026-07-31 18:50:19 | INFO | Epoch 5 train done | train_loss=3.9677 | time=3432.6s
+2026-07-31 18:50:19 | INFO | Computing validation loss ...
+2026-07-31 18:50:26 | INFO | val_loss=3.8807
+2026-07-31 18:50:26 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 18:50:46 | INFO |   BLEU-1 = 0.6887
+2026-07-31 18:50:46 | INFO |   BLEU-2 = 0.5125
+2026-07-31 18:50:46 | INFO |   BLEU-3 = 0.3564
+2026-07-31 18:50:46 | INFO |   BLEU-4 = 0.2556
+2026-07-31 18:50:46 | INFO |   METEOR = 0.4406
+2026-07-31 18:50:46 | INFO |   ROUGE-L = 0.3782
+2026-07-31 18:50:46 | INFO |   CIDEr-D = 0.7536
+2026-07-31 18:50:46 | INFO | ★ New best BLEU-4: 0.2556
+2026-07-31 18:50:47 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 18:50:47 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-07-31 18:50:48 | INFO | EPOCH COMPLETE 5 | train_loss=3.9677 val_loss=3.8807 BLEU-4=0.2556 (best=0.2556) | graphs updated in runs/
+2026-07-31 18:50:48 | INFO | ------------------------------------------------------------------------
+2026-07-31 18:50:48 | INFO | Starting epoch 6 / 79  (tf_ratio=0.886)
+2026-07-31 18:53:54 | INFO | EPOCH 6 | BATCH 1000/18492 | loss=3.7777 | avg_loss=3.9524 | batch_time=0.18s | ETA_epoch=3125s
+2026-07-31 18:57:00 | INFO | EPOCH 6 | BATCH 2000/18492 | loss=3.9525 | avg_loss=3.9587 | batch_time=0.21s | ETA_epoch=3464s
+2026-07-31 19:00:05 | INFO | EPOCH 6 | BATCH 3000/18492 | loss=3.6370 | avg_loss=3.9606 | batch_time=0.20s | ETA_epoch=3081s
+2026-07-31 19:03:10 | INFO | EPOCH 6 | BATCH 4000/18492 | loss=4.7775 | avg_loss=3.9634 | batch_time=0.20s | ETA_epoch=2894s
+2026-07-31 19:06:16 | INFO | EPOCH 6 | BATCH 5000/18492 | loss=3.6812 | avg_loss=3.9643 | batch_time=0.17s | ETA_epoch=2335s
+2026-07-31 19:06:16 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 19:09:22 | INFO | EPOCH 6 | BATCH 6000/18492 | loss=4.4644 | avg_loss=3.9667 | batch_time=0.19s | ETA_epoch=2341s
+2026-07-31 19:12:28 | INFO | EPOCH 6 | BATCH 7000/18492 | loss=3.4747 | avg_loss=3.9696 | batch_time=0.17s | ETA_epoch=1976s
+2026-07-31 19:15:34 | INFO | EPOCH 6 | BATCH 8000/18492 | loss=3.8141 | avg_loss=3.9723 | batch_time=0.20s | ETA_epoch=2123s
+2026-07-31 19:18:40 | INFO | EPOCH 6 | BATCH 9000/18492 | loss=4.4649 | avg_loss=3.9736 | batch_time=0.18s | ETA_epoch=1750s
+2026-07-31 19:21:46 | INFO | EPOCH 6 | BATCH 10000/18492 | loss=4.1526 | avg_loss=3.9758 | batch_time=0.18s | ETA_epoch=1492s
+2026-07-31 19:21:47 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 19:24:53 | INFO | EPOCH 6 | BATCH 11000/18492 | loss=3.9456 | avg_loss=3.9770 | batch_time=0.20s | ETA_epoch=1464s
+2026-07-31 19:27:59 | INFO | EPOCH 6 | BATCH 12000/18492 | loss=3.9666 | avg_loss=3.9789 | batch_time=0.21s | ETA_epoch=1359s
+2026-07-31 19:31:04 | INFO | EPOCH 6 | BATCH 13000/18492 | loss=4.3230 | avg_loss=3.9801 | batch_time=0.18s | ETA_epoch=966s
+2026-07-31 19:34:10 | INFO | EPOCH 6 | BATCH 14000/18492 | loss=3.8479 | avg_loss=3.9808 | batch_time=0.18s | ETA_epoch=822s
+2026-07-31 19:37:15 | INFO | EPOCH 6 | BATCH 15000/18492 | loss=4.3076 | avg_loss=3.9819 | batch_time=0.19s | ETA_epoch=658s
+2026-07-31 19:37:16 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 19:40:21 | INFO | EPOCH 6 | BATCH 16000/18492 | loss=3.6963 | avg_loss=3.9823 | batch_time=0.17s | ETA_epoch=431s
+2026-07-31 19:43:27 | INFO | EPOCH 6 | BATCH 17000/18492 | loss=3.7807 | avg_loss=3.9826 | batch_time=0.18s | ETA_epoch=265s
+2026-07-31 19:46:33 | INFO | EPOCH 6 | BATCH 18000/18492 | loss=4.2435 | avg_loss=3.9834 | batch_time=0.21s | ETA_epoch=102s
+2026-07-31 19:48:04 | INFO | EPOCH 6 | BATCH 18492/18492 | loss=3.8431 | avg_loss=3.9832 | batch_time=0.20s | ETA_epoch=0s
+2026-07-31 19:48:04 | INFO | Epoch 6 train done | train_loss=3.9832 | time=3436.1s
+2026-07-31 19:48:04 | INFO | Computing validation loss ...
+2026-07-31 19:48:11 | INFO | val_loss=3.8830
+2026-07-31 19:48:11 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 19:48:30 | INFO |   BLEU-1 = 0.6973
+2026-07-31 19:48:30 | INFO |   BLEU-2 = 0.5157
+2026-07-31 19:48:30 | INFO |   BLEU-3 = 0.3600
+2026-07-31 19:48:30 | INFO |   BLEU-4 = 0.2586
+2026-07-31 19:48:30 | INFO |   METEOR = 0.4457
+2026-07-31 19:48:30 | INFO |   ROUGE-L = 0.3857
+2026-07-31 19:48:30 | INFO |   CIDEr-D = 0.7783
+2026-07-31 19:48:30 | INFO | ★ New best BLEU-4: 0.2586
+2026-07-31 19:48:32 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 19:48:32 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-07-31 19:48:32 | INFO | EPOCH COMPLETE 6 | train_loss=3.9832 val_loss=3.8830 BLEU-4=0.2586 (best=0.2586) | graphs updated in runs/
+2026-07-31 19:48:32 | INFO | ------------------------------------------------------------------------
+2026-07-31 19:48:32 | INFO | Starting epoch 7 / 79  (tf_ratio=0.868)
+2026-07-31 19:51:39 | INFO | EPOCH 7 | BATCH 1000/18492 | loss=4.2429 | avg_loss=3.9884 | batch_time=0.18s | ETA_epoch=3213s
+2026-07-31 19:54:45 | INFO | EPOCH 7 | BATCH 2000/18492 | loss=3.8411 | avg_loss=3.9877 | batch_time=0.18s | ETA_epoch=2952s
+2026-07-31 19:57:50 | INFO | EPOCH 7 | BATCH 3000/18492 | loss=4.2531 | avg_loss=3.9894 | batch_time=0.19s | ETA_epoch=2931s
+2026-07-31 20:00:56 | INFO | EPOCH 7 | BATCH 4000/18492 | loss=3.8761 | avg_loss=3.9917 | batch_time=0.20s | ETA_epoch=2873s
+2026-07-31 20:04:03 | INFO | EPOCH 7 | BATCH 5000/18492 | loss=3.7726 | avg_loss=3.9944 | batch_time=0.18s | ETA_epoch=2444s
+2026-07-31 20:04:03 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 20:07:08 | INFO | EPOCH 7 | BATCH 6000/18492 | loss=4.0131 | avg_loss=3.9952 | batch_time=0.20s | ETA_epoch=2449s
+2026-07-31 20:10:13 | INFO | EPOCH 7 | BATCH 7000/18492 | loss=4.0800 | avg_loss=3.9934 | batch_time=0.18s | ETA_epoch=2097s
+2026-07-31 20:13:19 | INFO | EPOCH 7 | BATCH 8000/18492 | loss=3.7175 | avg_loss=3.9955 | batch_time=0.18s | ETA_epoch=1844s
+2026-07-31 20:16:25 | INFO | EPOCH 7 | BATCH 9000/18492 | loss=4.3215 | avg_loss=3.9961 | batch_time=0.21s | ETA_epoch=1967s
+2026-07-31 20:19:31 | INFO | EPOCH 7 | BATCH 10000/18492 | loss=3.8363 | avg_loss=3.9977 | batch_time=0.18s | ETA_epoch=1566s
+2026-07-31 20:19:32 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 20:22:38 | INFO | EPOCH 7 | BATCH 11000/18492 | loss=4.1783 | avg_loss=3.9983 | batch_time=0.18s | ETA_epoch=1371s
+2026-07-31 20:25:44 | INFO | EPOCH 7 | BATCH 12000/18492 | loss=4.3699 | avg_loss=3.9994 | batch_time=0.18s | ETA_epoch=1192s
+2026-07-31 20:28:50 | INFO | EPOCH 7 | BATCH 13000/18492 | loss=4.1423 | avg_loss=3.9990 | batch_time=0.19s | ETA_epoch=1042s
+2026-07-31 20:31:56 | INFO | EPOCH 7 | BATCH 14000/18492 | loss=3.4333 | avg_loss=3.9989 | batch_time=0.17s | ETA_epoch=774s
+2026-07-31 20:35:01 | INFO | EPOCH 7 | BATCH 15000/18492 | loss=3.8950 | avg_loss=3.9980 | batch_time=0.19s | ETA_epoch=655s
+2026-07-31 20:35:02 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 20:38:09 | INFO | EPOCH 7 | BATCH 16000/18492 | loss=3.7884 | avg_loss=3.9995 | batch_time=0.18s | ETA_epoch=444s
+2026-07-31 20:41:14 | INFO | EPOCH 7 | BATCH 17000/18492 | loss=3.9955 | avg_loss=4.0000 | batch_time=0.20s | ETA_epoch=293s
+2026-07-31 20:44:20 | INFO | EPOCH 7 | BATCH 18000/18492 | loss=4.1179 | avg_loss=4.0011 | batch_time=0.19s | ETA_epoch=92s
+2026-07-31 20:45:51 | INFO | EPOCH 7 | BATCH 18492/18492 | loss=3.7456 | avg_loss=4.0019 | batch_time=0.19s | ETA_epoch=0s
+2026-07-31 20:45:52 | INFO | Epoch 7 train done | train_loss=4.0019 | time=3439.2s
+2026-07-31 20:45:52 | INFO | Computing validation loss ...
+2026-07-31 20:45:58 | INFO | val_loss=3.8781
+2026-07-31 20:45:58 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 20:46:18 | INFO |   BLEU-1 = 0.6932
+2026-07-31 20:46:18 | INFO |   BLEU-2 = 0.5190
+2026-07-31 20:46:18 | INFO |   BLEU-3 = 0.3643
+2026-07-31 20:46:18 | INFO |   BLEU-4 = 0.2630
+2026-07-31 20:46:18 | INFO |   METEOR = 0.4456
+2026-07-31 20:46:18 | INFO |   ROUGE-L = 0.3861
+2026-07-31 20:46:18 | INFO |   CIDEr-D = 0.7854
+2026-07-31 20:46:18 | INFO | ★ New best BLEU-4: 0.2630
+2026-07-31 20:46:19 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 20:46:19 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-07-31 20:46:20 | INFO | EPOCH COMPLETE 7 | train_loss=4.0019 val_loss=3.8781 BLEU-4=0.2630 (best=0.2630) | graphs updated in runs/
+2026-07-31 20:46:20 | INFO | ------------------------------------------------------------------------
+2026-07-31 20:46:20 | INFO | Starting epoch 8 / 79  (tf_ratio=0.851)
+2026-07-31 20:49:26 | INFO | EPOCH 8 | BATCH 1000/18492 | loss=4.1752 | avg_loss=3.9954 | batch_time=0.23s | ETA_epoch=4040s
+2026-07-31 20:52:32 | INFO | EPOCH 8 | BATCH 2000/18492 | loss=4.1389 | avg_loss=3.9976 | batch_time=0.18s | ETA_epoch=2973s
+2026-07-31 20:55:39 | INFO | EPOCH 8 | BATCH 3000/18492 | loss=3.8638 | avg_loss=4.0020 | batch_time=0.18s | ETA_epoch=2737s
+2026-07-31 20:58:45 | INFO | EPOCH 8 | BATCH 4000/18492 | loss=4.1901 | avg_loss=4.0020 | batch_time=0.18s | ETA_epoch=2537s
+2026-07-31 21:01:52 | INFO | EPOCH 8 | BATCH 5000/18492 | loss=3.7695 | avg_loss=4.0037 | batch_time=0.18s | ETA_epoch=2455s
+2026-07-31 21:01:53 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 21:04:59 | INFO | EPOCH 8 | BATCH 6000/18492 | loss=4.0321 | avg_loss=4.0063 | batch_time=0.18s | ETA_epoch=2232s
+2026-07-31 21:08:05 | INFO | EPOCH 8 | BATCH 7000/18492 | loss=3.9425 | avg_loss=4.0061 | batch_time=0.17s | ETA_epoch=1999s
+2026-07-31 21:11:11 | INFO | EPOCH 8 | BATCH 8000/18492 | loss=3.4728 | avg_loss=4.0081 | batch_time=0.17s | ETA_epoch=1807s
+2026-07-31 21:14:18 | INFO | EPOCH 8 | BATCH 9000/18492 | loss=3.6808 | avg_loss=4.0094 | batch_time=0.20s | ETA_epoch=1890s
+2026-07-31 21:17:24 | INFO | EPOCH 8 | BATCH 10000/18492 | loss=4.6528 | avg_loss=4.0115 | batch_time=0.20s | ETA_epoch=1715s
+2026-07-31 21:17:25 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 21:20:31 | INFO | EPOCH 8 | BATCH 11000/18492 | loss=3.3729 | avg_loss=4.0125 | batch_time=0.17s | ETA_epoch=1252s
+2026-07-31 21:23:37 | INFO | EPOCH 8 | BATCH 12000/18492 | loss=3.9328 | avg_loss=4.0148 | batch_time=0.18s | ETA_epoch=1158s
+2026-07-31 21:26:43 | INFO | EPOCH 8 | BATCH 13000/18492 | loss=3.9049 | avg_loss=4.0164 | batch_time=0.17s | ETA_epoch=949s
+2026-07-31 21:29:49 | INFO | EPOCH 8 | BATCH 14000/18492 | loss=3.9316 | avg_loss=4.0164 | batch_time=0.17s | ETA_epoch=776s
+2026-07-31 21:32:56 | INFO | EPOCH 8 | BATCH 15000/18492 | loss=4.2666 | avg_loss=4.0182 | batch_time=0.17s | ETA_epoch=601s
+2026-07-31 21:32:57 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 21:36:02 | INFO | EPOCH 8 | BATCH 16000/18492 | loss=3.9338 | avg_loss=4.0181 | batch_time=0.19s | ETA_epoch=480s
+2026-07-31 21:39:08 | INFO | EPOCH 8 | BATCH 17000/18492 | loss=4.3135 | avg_loss=4.0189 | batch_time=0.18s | ETA_epoch=262s
+2026-07-31 21:42:15 | INFO | EPOCH 8 | BATCH 18000/18492 | loss=4.2467 | avg_loss=4.0199 | batch_time=0.19s | ETA_epoch=91s
+2026-07-31 21:43:47 | INFO | EPOCH 8 | BATCH 18492/18492 | loss=4.0485 | avg_loss=4.0204 | batch_time=0.23s | ETA_epoch=0s
+2026-07-31 21:43:47 | INFO | Epoch 8 train done | train_loss=4.0204 | time=3447.0s
+2026-07-31 21:43:47 | INFO | Computing validation loss ...
+2026-07-31 21:43:54 | INFO | val_loss=3.8780
+2026-07-31 21:43:54 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 21:44:14 | INFO |   BLEU-1 = 0.6855
+2026-07-31 21:44:14 | INFO |   BLEU-2 = 0.5102
+2026-07-31 21:44:14 | INFO |   BLEU-3 = 0.3530
+2026-07-31 21:44:14 | INFO |   BLEU-4 = 0.2525
+2026-07-31 21:44:14 | INFO |   METEOR = 0.4384
+2026-07-31 21:44:14 | INFO |   ROUGE-L = 0.3774
+2026-07-31 21:44:14 | INFO |   CIDEr-D = 0.7473
+2026-07-31 21:44:14 | INFO | No BLEU-4 improvement (1 / 10 patience)
+2026-07-31 21:44:14 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 21:44:15 | INFO | EPOCH COMPLETE 8 | train_loss=4.0204 val_loss=3.8780 BLEU-4=0.2525 (best=0.2630) | graphs updated in runs/
+2026-07-31 21:44:15 | INFO | ------------------------------------------------------------------------
+2026-07-31 21:44:15 | INFO | Starting epoch 9 / 79  (tf_ratio=0.834)
+2026-07-31 21:47:21 | INFO | EPOCH 9 | BATCH 1000/18492 | loss=3.7779 | avg_loss=4.0173 | batch_time=0.21s | ETA_epoch=3623s
+2026-07-31 21:50:28 | INFO | EPOCH 9 | BATCH 2000/18492 | loss=4.2717 | avg_loss=4.0164 | batch_time=0.20s | ETA_epoch=3344s
+2026-07-31 21:53:34 | INFO | EPOCH 9 | BATCH 3000/18492 | loss=3.9731 | avg_loss=4.0273 | batch_time=0.18s | ETA_epoch=2796s
+2026-07-31 21:56:40 | INFO | EPOCH 9 | BATCH 4000/18492 | loss=4.1620 | avg_loss=4.0260 | batch_time=0.18s | ETA_epoch=2546s
+2026-07-31 21:59:46 | INFO | EPOCH 9 | BATCH 5000/18492 | loss=3.8351 | avg_loss=4.0250 | batch_time=0.18s | ETA_epoch=2415s
+2026-07-31 21:59:46 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 22:02:52 | INFO | EPOCH 9 | BATCH 6000/18492 | loss=3.6829 | avg_loss=4.0264 | batch_time=0.18s | ETA_epoch=2241s
+2026-07-31 22:05:58 | INFO | EPOCH 9 | BATCH 7000/18492 | loss=3.9231 | avg_loss=4.0301 | batch_time=0.18s | ETA_epoch=2117s
+2026-07-31 22:09:05 | INFO | EPOCH 9 | BATCH 8000/18492 | loss=4.0746 | avg_loss=4.0341 | batch_time=0.18s | ETA_epoch=1854s
+2026-07-31 22:12:11 | INFO | EPOCH 9 | BATCH 9000/18492 | loss=4.0728 | avg_loss=4.0348 | batch_time=0.21s | ETA_epoch=1982s
+2026-07-31 22:15:18 | INFO | EPOCH 9 | BATCH 10000/18492 | loss=4.0100 | avg_loss=4.0362 | batch_time=0.20s | ETA_epoch=1679s
+2026-07-31 22:15:18 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 22:18:24 | INFO | EPOCH 9 | BATCH 11000/18492 | loss=3.8177 | avg_loss=4.0370 | batch_time=0.18s | ETA_epoch=1333s
+2026-07-31 22:21:31 | INFO | EPOCH 9 | BATCH 12000/18492 | loss=3.8832 | avg_loss=4.0400 | batch_time=0.17s | ETA_epoch=1115s
+2026-07-31 22:24:37 | INFO | EPOCH 9 | BATCH 13000/18492 | loss=3.8050 | avg_loss=4.0415 | batch_time=0.19s | ETA_epoch=1045s
+2026-07-31 22:27:43 | INFO | EPOCH 9 | BATCH 14000/18492 | loss=3.8374 | avg_loss=4.0408 | batch_time=0.19s | ETA_epoch=853s
+2026-07-31 22:30:49 | INFO | EPOCH 9 | BATCH 15000/18492 | loss=4.2256 | avg_loss=4.0425 | batch_time=0.19s | ETA_epoch=652s
+2026-07-31 22:30:50 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 22:33:56 | INFO | EPOCH 9 | BATCH 16000/18492 | loss=4.2551 | avg_loss=4.0440 | batch_time=0.19s | ETA_epoch=468s
+2026-07-31 22:37:02 | INFO | EPOCH 9 | BATCH 17000/18492 | loss=4.0296 | avg_loss=4.0434 | batch_time=0.20s | ETA_epoch=299s
+2026-07-31 22:40:08 | INFO | EPOCH 9 | BATCH 18000/18492 | loss=3.9479 | avg_loss=4.0441 | batch_time=0.19s | ETA_epoch=92s
+2026-07-31 22:41:39 | INFO | EPOCH 9 | BATCH 18492/18492 | loss=4.3871 | avg_loss=4.0437 | batch_time=0.19s | ETA_epoch=0s
+2026-07-31 22:41:39 | INFO | Epoch 9 train done | train_loss=4.0437 | time=3444.6s
+2026-07-31 22:41:39 | INFO | Computing validation loss ...
+2026-07-31 22:41:46 | INFO | val_loss=3.8849
+2026-07-31 22:41:46 | INFO | Evaluating metrics (max_batches=50) ...
+2026-07-31 22:42:06 | INFO |   BLEU-1 = 0.6936
+2026-07-31 22:42:06 | INFO |   BLEU-2 = 0.5149
+2026-07-31 22:42:06 | INFO |   BLEU-3 = 0.3575
+2026-07-31 22:42:06 | INFO |   BLEU-4 = 0.2547
+2026-07-31 22:42:06 | INFO |   METEOR = 0.4424
+2026-07-31 22:42:06 | INFO |   ROUGE-L = 0.3872
+2026-07-31 22:42:06 | INFO |   CIDEr-D = 0.7621
+2026-07-31 22:42:06 | INFO | No BLEU-4 improvement (2 / 10 patience)
+2026-07-31 22:42:06 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-07-31 22:42:07 | INFO | EPOCH COMPLETE 9 | train_loss=4.0437 val_loss=3.8849 BLEU-4=0.2547 (best=0.2630) | graphs updated in runs/
+2026-07-31 22:42:07 | INFO | >> Unfreezing encoder for fine-tuning (epoch 10)
+2026-07-31 22:42:07 | INFO | ------------------------------------------------------------------------
+2026-07-31 22:42:07 | INFO | Starting epoch 10 / 79  (tf_ratio=0.817)
+2026-07-31 22:46:54 | INFO | EPOCH 10 | BATCH 1000/18492 | loss=3.8449 | avg_loss=4.0167 | batch_time=0.33s | ETA_epoch=5817s
+2026-07-31 22:51:40 | INFO | EPOCH 10 | BATCH 2000/18492 | loss=4.8815 | avg_loss=4.0176 | batch_time=0.28s | ETA_epoch=4580s
+2026-07-31 22:56:27 | INFO | EPOCH 10 | BATCH 3000/18492 | loss=3.4496 | avg_loss=4.0169 | batch_time=0.27s | ETA_epoch=4196s
+2026-07-31 23:01:12 | INFO | EPOCH 10 | BATCH 4000/18492 | loss=3.9279 | avg_loss=4.0136 | batch_time=0.28s | ETA_epoch=4081s
+2026-07-31 23:05:58 | INFO | EPOCH 10 | BATCH 5000/18492 | loss=4.2435 | avg_loss=4.0167 | batch_time=0.30s | ETA_epoch=4026s
+2026-07-31 23:06:00 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-07-31 23:10:45 | INFO | EPOCH 10 | BATCH 6000/18492 | loss=4.0830 | avg_loss=4.0179 | batch_time=0.31s | ETA_epoch=3812s
+2026-07-31 23:15:32 | INFO | EPOCH 10 | BATCH 7000/18492 | loss=3.8522 | avg_loss=4.0201 | batch_time=0.27s | ETA_epoch=3097s
+2026-07-31 23:20:18 | INFO | EPOCH 10 | BATCH 8000/18492 | loss=3.7976 | avg_loss=4.0182 | batch_time=0.27s | ETA_epoch=2882s
+2026-07-31 23:25:03 | INFO | EPOCH 10 | BATCH 9000/18492 | loss=4.0746 | avg_loss=4.0148 | batch_time=0.27s | ETA_epoch=2598s
+2026-07-31 23:29:50 | INFO | EPOCH 10 | BATCH 10000/18492 | loss=4.2405 | avg_loss=4.0151 | batch_time=0.29s | ETA_epoch=2467s
+2026-07-31 23:29:51 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-07-31 23:34:37 | INFO | EPOCH 10 | BATCH 11000/18492 | loss=4.4095 | avg_loss=4.0134 | batch_time=0.34s | ETA_epoch=2512s
+2026-07-31 23:39:23 | INFO | EPOCH 10 | BATCH 12000/18492 | loss=4.3458 | avg_loss=4.0125 | batch_time=0.29s | ETA_epoch=1867s
+2026-07-31 23:44:09 | INFO | EPOCH 10 | BATCH 13000/18492 | loss=4.4363 | avg_loss=4.0113 | batch_time=0.28s | ETA_epoch=1550s
+2026-07-31 23:48:55 | INFO | EPOCH 10 | BATCH 14000/18492 | loss=3.7163 | avg_loss=4.0097 | batch_time=0.29s | ETA_epoch=1290s
+2026-07-31 23:53:42 | INFO | EPOCH 10 | BATCH 15000/18492 | loss=3.6654 | avg_loss=4.0090 | batch_time=0.28s | ETA_epoch=964s
+2026-07-31 23:53:43 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-07-31 23:58:29 | INFO | EPOCH 10 | BATCH 16000/18492 | loss=3.3499 | avg_loss=4.0083 | batch_time=0.28s | ETA_epoch=689s
+2026-08-01 00:03:15 | INFO | EPOCH 10 | BATCH 17000/18492 | loss=3.7561 | avg_loss=4.0079 | batch_time=0.29s | ETA_epoch=438s
+2026-08-01 00:08:01 | INFO | EPOCH 10 | BATCH 18000/18492 | loss=4.0228 | avg_loss=4.0079 | batch_time=0.27s | ETA_epoch=135s
+2026-08-01 00:10:21 | INFO | EPOCH 10 | BATCH 18492/18492 | loss=3.5878 | avg_loss=4.0077 | batch_time=0.30s | ETA_epoch=0s
+2026-08-01 00:10:21 | INFO | Epoch 10 train done | train_loss=4.0077 | time=5294.2s
+2026-08-01 00:10:21 | INFO | Computing validation loss ...
+2026-08-01 00:10:28 | INFO | val_loss=3.8213
+2026-08-01 00:10:28 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 00:10:48 | INFO |   BLEU-1 = 0.7320
+2026-08-01 00:10:48 | INFO |   BLEU-2 = 0.5627
+2026-08-01 00:10:48 | INFO |   BLEU-3 = 0.3993
+2026-08-01 00:10:48 | INFO |   BLEU-4 = 0.2878
+2026-08-01 00:10:48 | INFO |   METEOR = 0.4778
+2026-08-01 00:10:48 | INFO |   ROUGE-L = 0.4066
+2026-08-01 00:10:48 | INFO |   CIDEr-D = 0.9133
+2026-08-01 00:10:48 | INFO | ★ New best BLEU-4: 0.2878
+2026-08-01 00:10:49 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 00:10:49 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-08-01 00:10:50 | INFO | EPOCH COMPLETE 10 | train_loss=4.0077 val_loss=3.8213 BLEU-4=0.2878 (best=0.2878) | graphs updated in runs/
+2026-08-01 00:10:50 | INFO | ------------------------------------------------------------------------
+2026-08-01 00:10:50 | INFO | Starting epoch 11 / 79  (tf_ratio=0.801)
+2026-08-01 00:15:36 | INFO | EPOCH 11 | BATCH 1000/18492 | loss=3.4392 | avg_loss=3.9702 | batch_time=0.30s | ETA_epoch=5209s
+2026-08-01 00:20:23 | INFO | EPOCH 11 | BATCH 2000/18492 | loss=3.4674 | avg_loss=3.9772 | batch_time=0.27s | ETA_epoch=4488s
+2026-08-01 00:25:10 | INFO | EPOCH 11 | BATCH 3000/18492 | loss=3.6252 | avg_loss=3.9790 | batch_time=0.27s | ETA_epoch=4236s
+2026-08-01 00:29:56 | INFO | EPOCH 11 | BATCH 4000/18492 | loss=3.6337 | avg_loss=3.9786 | batch_time=0.28s | ETA_epoch=3995s
+2026-08-01 00:34:41 | INFO | EPOCH 11 | BATCH 5000/18492 | loss=4.4287 | avg_loss=3.9783 | batch_time=0.30s | ETA_epoch=4076s
+2026-08-01 00:34:43 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 00:39:29 | INFO | EPOCH 11 | BATCH 6000/18492 | loss=4.5210 | avg_loss=3.9815 | batch_time=0.29s | ETA_epoch=3675s
+2026-08-01 00:44:17 | INFO | EPOCH 11 | BATCH 7000/18492 | loss=4.4575 | avg_loss=3.9858 | batch_time=0.28s | ETA_epoch=3247s
+2026-08-01 00:49:02 | INFO | EPOCH 11 | BATCH 8000/18492 | loss=3.9161 | avg_loss=3.9861 | batch_time=0.27s | ETA_epoch=2882s
+2026-08-01 00:53:50 | INFO | EPOCH 11 | BATCH 9000/18492 | loss=4.0530 | avg_loss=3.9901 | batch_time=0.28s | ETA_epoch=2662s
+2026-08-01 00:58:35 | INFO | EPOCH 11 | BATCH 10000/18492 | loss=4.2133 | avg_loss=3.9893 | batch_time=0.39s | ETA_epoch=3349s
+2026-08-01 00:58:36 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 01:03:22 | INFO | EPOCH 11 | BATCH 11000/18492 | loss=4.6108 | avg_loss=3.9895 | batch_time=0.28s | ETA_epoch=2112s
+2026-08-01 01:08:08 | INFO | EPOCH 11 | BATCH 12000/18492 | loss=3.3029 | avg_loss=3.9908 | batch_time=0.27s | ETA_epoch=1743s
+2026-08-01 01:12:55 | INFO | EPOCH 11 | BATCH 13000/18492 | loss=3.7523 | avg_loss=3.9908 | batch_time=0.28s | ETA_epoch=1564s
+2026-08-01 01:17:41 | INFO | EPOCH 11 | BATCH 14000/18492 | loss=4.0253 | avg_loss=3.9900 | batch_time=0.29s | ETA_epoch=1286s
+2026-08-01 01:22:28 | INFO | EPOCH 11 | BATCH 15000/18492 | loss=3.9632 | avg_loss=3.9898 | batch_time=0.28s | ETA_epoch=977s
+2026-08-01 01:22:29 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 01:27:15 | INFO | EPOCH 11 | BATCH 16000/18492 | loss=4.1973 | avg_loss=3.9899 | batch_time=0.29s | ETA_epoch=731s
+2026-08-01 01:32:01 | INFO | EPOCH 11 | BATCH 17000/18492 | loss=3.5976 | avg_loss=3.9914 | batch_time=0.28s | ETA_epoch=417s
+2026-08-01 01:36:48 | INFO | EPOCH 11 | BATCH 18000/18492 | loss=3.7841 | avg_loss=3.9926 | batch_time=0.27s | ETA_epoch=135s
+2026-08-01 01:39:09 | INFO | EPOCH 11 | BATCH 18492/18492 | loss=4.0161 | avg_loss=3.9927 | batch_time=0.28s | ETA_epoch=0s
+2026-08-01 01:39:09 | INFO | Epoch 11 train done | train_loss=3.9927 | time=5299.4s
+2026-08-01 01:39:09 | INFO | Computing validation loss ...
+2026-08-01 01:39:16 | INFO | val_loss=3.8121
+2026-08-01 01:39:16 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 01:39:36 | INFO |   BLEU-1 = 0.7292
+2026-08-01 01:39:36 | INFO |   BLEU-2 = 0.5692
+2026-08-01 01:39:36 | INFO |   BLEU-3 = 0.4169
+2026-08-01 01:39:36 | INFO |   BLEU-4 = 0.3071
+2026-08-01 01:39:36 | INFO |   METEOR = 0.4809
+2026-08-01 01:39:36 | INFO |   ROUGE-L = 0.4096
+2026-08-01 01:39:36 | INFO |   CIDEr-D = 0.9525
+2026-08-01 01:39:36 | INFO | ★ New best BLEU-4: 0.3071
+2026-08-01 01:39:38 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 01:39:38 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-08-01 01:39:38 | INFO | EPOCH COMPLETE 11 | train_loss=3.9927 val_loss=3.8121 BLEU-4=0.3071 (best=0.3071) | graphs updated in runs/
+2026-08-01 01:39:38 | INFO | ------------------------------------------------------------------------
+2026-08-01 01:39:38 | INFO | Starting epoch 12 / 79  (tf_ratio=0.785)
+2026-08-01 01:44:27 | INFO | EPOCH 12 | BATCH 1000/18492 | loss=4.1240 | avg_loss=3.9710 | batch_time=0.28s | ETA_epoch=4959s
+2026-08-01 01:49:14 | INFO | EPOCH 12 | BATCH 2000/18492 | loss=4.5782 | avg_loss=3.9737 | batch_time=0.29s | ETA_epoch=4797s
+2026-08-01 01:54:01 | INFO | EPOCH 12 | BATCH 3000/18492 | loss=4.1451 | avg_loss=3.9787 | batch_time=0.27s | ETA_epoch=4156s
+2026-08-01 01:58:47 | INFO | EPOCH 12 | BATCH 4000/18492 | loss=4.2264 | avg_loss=3.9769 | batch_time=0.30s | ETA_epoch=4363s
+2026-08-01 02:03:34 | INFO | EPOCH 12 | BATCH 5000/18492 | loss=3.9068 | avg_loss=3.9780 | batch_time=0.30s | ETA_epoch=4049s
+2026-08-01 02:03:35 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 02:08:21 | INFO | EPOCH 12 | BATCH 6000/18492 | loss=3.9114 | avg_loss=3.9807 | batch_time=0.28s | ETA_epoch=3462s
+2026-08-01 02:13:08 | INFO | EPOCH 12 | BATCH 7000/18492 | loss=3.9826 | avg_loss=3.9842 | batch_time=0.28s | ETA_epoch=3230s
+2026-08-01 02:17:55 | INFO | EPOCH 12 | BATCH 8000/18492 | loss=3.7970 | avg_loss=3.9849 | batch_time=0.28s | ETA_epoch=2971s
+2026-08-01 02:22:42 | INFO | EPOCH 12 | BATCH 9000/18492 | loss=3.6245 | avg_loss=3.9858 | batch_time=0.28s | ETA_epoch=2636s
+2026-08-01 02:27:28 | INFO | EPOCH 12 | BATCH 10000/18492 | loss=3.7399 | avg_loss=3.9871 | batch_time=0.27s | ETA_epoch=2304s
+2026-08-01 02:27:29 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 02:32:16 | INFO | EPOCH 12 | BATCH 11000/18492 | loss=4.0773 | avg_loss=3.9890 | batch_time=0.28s | ETA_epoch=2073s
+2026-08-01 02:37:04 | INFO | EPOCH 12 | BATCH 12000/18492 | loss=3.9081 | avg_loss=3.9889 | batch_time=0.30s | ETA_epoch=1964s
+2026-08-01 02:41:49 | INFO | EPOCH 12 | BATCH 13000/18492 | loss=4.6198 | avg_loss=3.9898 | batch_time=0.32s | ETA_epoch=1747s
+2026-08-01 02:46:36 | INFO | EPOCH 12 | BATCH 14000/18492 | loss=4.2159 | avg_loss=3.9907 | batch_time=0.28s | ETA_epoch=1247s
+2026-08-01 02:51:22 | INFO | EPOCH 12 | BATCH 15000/18492 | loss=4.0509 | avg_loss=3.9908 | batch_time=0.28s | ETA_epoch=981s
+2026-08-01 02:51:24 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 02:56:10 | INFO | EPOCH 12 | BATCH 16000/18492 | loss=3.8783 | avg_loss=3.9912 | batch_time=0.28s | ETA_epoch=689s
+2026-08-01 03:00:57 | INFO | EPOCH 12 | BATCH 17000/18492 | loss=3.8748 | avg_loss=3.9922 | batch_time=0.28s | ETA_epoch=418s
+2026-08-01 03:05:43 | INFO | EPOCH 12 | BATCH 18000/18492 | loss=3.6121 | avg_loss=3.9924 | batch_time=0.28s | ETA_epoch=136s
+2026-08-01 03:08:03 | INFO | EPOCH 12 | BATCH 18492/18492 | loss=3.8197 | avg_loss=3.9927 | batch_time=0.30s | ETA_epoch=0s
+2026-08-01 03:08:03 | INFO | Epoch 12 train done | train_loss=3.9927 | time=5305.1s
+2026-08-01 03:08:03 | INFO | Computing validation loss ...
+2026-08-01 03:08:10 | INFO | val_loss=3.8070
+2026-08-01 03:08:10 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 03:08:30 | INFO |   BLEU-1 = 0.7397
+2026-08-01 03:08:30 | INFO |   BLEU-2 = 0.5796
+2026-08-01 03:08:30 | INFO |   BLEU-3 = 0.4166
+2026-08-01 03:08:30 | INFO |   BLEU-4 = 0.3043
+2026-08-01 03:08:30 | INFO |   METEOR = 0.4857
+2026-08-01 03:08:30 | INFO |   ROUGE-L = 0.4129
+2026-08-01 03:08:30 | INFO |   CIDEr-D = 0.9845
+2026-08-01 03:08:30 | INFO | No BLEU-4 improvement (1 / 10 patience)
+2026-08-01 03:08:31 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 03:08:32 | INFO | EPOCH COMPLETE 12 | train_loss=3.9927 val_loss=3.8070 BLEU-4=0.3043 (best=0.3071) | graphs updated in runs/
+2026-08-01 03:08:32 | INFO | ------------------------------------------------------------------------
+2026-08-01 03:08:32 | INFO | Starting epoch 13 / 79  (tf_ratio=0.769)
+2026-08-01 03:13:19 | INFO | EPOCH 13 | BATCH 1000/18492 | loss=4.2517 | avg_loss=3.9919 | batch_time=0.28s | ETA_epoch=4929s
+2026-08-01 03:18:06 | INFO | EPOCH 13 | BATCH 2000/18492 | loss=3.9064 | avg_loss=3.9791 | batch_time=0.28s | ETA_epoch=4623s
+2026-08-01 03:22:53 | INFO | EPOCH 13 | BATCH 3000/18492 | loss=4.0491 | avg_loss=3.9871 | batch_time=0.29s | ETA_epoch=4553s
+2026-08-01 03:27:39 | INFO | EPOCH 13 | BATCH 4000/18492 | loss=4.0652 | avg_loss=3.9875 | batch_time=0.27s | ETA_epoch=3935s
+2026-08-01 03:32:26 | INFO | EPOCH 13 | BATCH 5000/18492 | loss=3.6815 | avg_loss=3.9866 | batch_time=0.27s | ETA_epoch=3704s
+2026-08-01 03:32:28 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 03:37:14 | INFO | EPOCH 13 | BATCH 6000/18492 | loss=3.3161 | avg_loss=3.9844 | batch_time=0.27s | ETA_epoch=3377s
+2026-08-01 03:42:01 | INFO | EPOCH 13 | BATCH 7000/18492 | loss=4.4474 | avg_loss=3.9862 | batch_time=0.30s | ETA_epoch=3495s
+2026-08-01 03:46:49 | INFO | EPOCH 13 | BATCH 8000/18492 | loss=3.8515 | avg_loss=3.9884 | batch_time=0.27s | ETA_epoch=2857s
+2026-08-01 03:51:36 | INFO | EPOCH 13 | BATCH 9000/18492 | loss=3.8736 | avg_loss=3.9883 | batch_time=0.28s | ETA_epoch=2651s
+2026-08-01 03:56:24 | INFO | EPOCH 13 | BATCH 10000/18492 | loss=4.0530 | avg_loss=3.9891 | batch_time=0.31s | ETA_epoch=2629s
+2026-08-01 03:56:25 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 04:01:10 | INFO | EPOCH 13 | BATCH 11000/18492 | loss=4.0861 | avg_loss=3.9895 | batch_time=0.27s | ETA_epoch=2018s
+2026-08-01 04:05:56 | INFO | EPOCH 13 | BATCH 12000/18492 | loss=4.1648 | avg_loss=3.9903 | batch_time=0.27s | ETA_epoch=1775s
+2026-08-01 04:10:43 | INFO | EPOCH 13 | BATCH 13000/18492 | loss=3.7972 | avg_loss=3.9902 | batch_time=0.27s | ETA_epoch=1507s
+2026-08-01 04:15:30 | INFO | EPOCH 13 | BATCH 14000/18492 | loss=3.7508 | avg_loss=3.9904 | batch_time=0.28s | ETA_epoch=1250s
+2026-08-01 04:20:17 | INFO | EPOCH 13 | BATCH 15000/18492 | loss=3.9208 | avg_loss=3.9911 | batch_time=0.28s | ETA_epoch=961s
+2026-08-01 04:20:18 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 04:25:04 | INFO | EPOCH 13 | BATCH 16000/18492 | loss=4.4531 | avg_loss=3.9909 | batch_time=0.35s | ETA_epoch=883s
+2026-08-01 04:29:51 | INFO | EPOCH 13 | BATCH 17000/18492 | loss=3.9179 | avg_loss=3.9920 | batch_time=0.28s | ETA_epoch=413s
+2026-08-01 04:34:38 | INFO | EPOCH 13 | BATCH 18000/18492 | loss=4.2288 | avg_loss=3.9926 | batch_time=0.31s | ETA_epoch=155s
+2026-08-01 04:36:59 | INFO | EPOCH 13 | BATCH 18492/18492 | loss=4.3329 | avg_loss=3.9922 | batch_time=0.28s | ETA_epoch=0s
+2026-08-01 04:36:59 | INFO | Epoch 13 train done | train_loss=3.9922 | time=5307.4s
+2026-08-01 04:36:59 | INFO | Computing validation loss ...
+2026-08-01 04:37:06 | INFO | val_loss=3.8021
+2026-08-01 04:37:06 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 04:37:26 | INFO |   BLEU-1 = 0.7388
+2026-08-01 04:37:26 | INFO |   BLEU-2 = 0.5799
+2026-08-01 04:37:26 | INFO |   BLEU-3 = 0.4245
+2026-08-01 04:37:26 | INFO |   BLEU-4 = 0.3130
+2026-08-01 04:37:26 | INFO |   METEOR = 0.4818
+2026-08-01 04:37:26 | INFO |   ROUGE-L = 0.4162
+2026-08-01 04:37:26 | INFO |   CIDEr-D = 0.9724
+2026-08-01 04:37:26 | INFO | ★ New best BLEU-4: 0.3130
+2026-08-01 04:37:27 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 04:37:27 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-08-01 04:37:28 | INFO | EPOCH COMPLETE 13 | train_loss=3.9922 val_loss=3.8021 BLEU-4=0.3130 (best=0.3130) | graphs updated in runs/
+2026-08-01 04:37:28 | INFO | ------------------------------------------------------------------------
+2026-08-01 04:37:28 | INFO | Starting epoch 14 / 79  (tf_ratio=0.754)
+2026-08-01 04:42:17 | INFO | EPOCH 14 | BATCH 1000/18492 | loss=4.3903 | avg_loss=3.9760 | batch_time=0.30s | ETA_epoch=5227s
+2026-08-01 04:47:03 | INFO | EPOCH 14 | BATCH 2000/18492 | loss=4.4620 | avg_loss=3.9757 | batch_time=0.27s | ETA_epoch=4534s
+2026-08-01 04:51:50 | INFO | EPOCH 14 | BATCH 3000/18492 | loss=4.0836 | avg_loss=3.9736 | batch_time=0.30s | ETA_epoch=4595s
+2026-08-01 04:56:38 | INFO | EPOCH 14 | BATCH 4000/18492 | loss=3.7836 | avg_loss=3.9777 | batch_time=0.28s | ETA_epoch=4005s
+2026-08-01 05:01:24 | INFO | EPOCH 14 | BATCH 5000/18492 | loss=4.2504 | avg_loss=3.9832 | batch_time=0.29s | ETA_epoch=3927s
+2026-08-01 05:01:26 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 05:06:12 | INFO | EPOCH 14 | BATCH 6000/18492 | loss=4.1007 | avg_loss=3.9853 | batch_time=0.27s | ETA_epoch=3410s
+2026-08-01 05:10:57 | INFO | EPOCH 14 | BATCH 7000/18492 | loss=3.9048 | avg_loss=3.9850 | batch_time=0.28s | ETA_epoch=3227s
+2026-08-01 05:15:44 | INFO | EPOCH 14 | BATCH 8000/18492 | loss=4.1483 | avg_loss=3.9864 | batch_time=0.27s | ETA_epoch=2839s
+2026-08-01 05:20:32 | INFO | EPOCH 14 | BATCH 9000/18492 | loss=4.2393 | avg_loss=3.9879 | batch_time=0.31s | ETA_epoch=2953s
+2026-08-01 05:25:19 | INFO | EPOCH 14 | BATCH 10000/18492 | loss=4.3087 | avg_loss=3.9900 | batch_time=0.30s | ETA_epoch=2581s
+2026-08-01 05:25:21 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 05:30:07 | INFO | EPOCH 14 | BATCH 11000/18492 | loss=4.0061 | avg_loss=3.9904 | batch_time=0.30s | ETA_epoch=2211s
+2026-08-01 05:34:53 | INFO | EPOCH 14 | BATCH 12000/18492 | loss=4.0630 | avg_loss=3.9910 | batch_time=0.28s | ETA_epoch=1826s
+2026-08-01 05:39:40 | INFO | EPOCH 14 | BATCH 13000/18492 | loss=3.8075 | avg_loss=3.9921 | batch_time=0.32s | ETA_epoch=1773s
+2026-08-01 05:44:28 | INFO | EPOCH 14 | BATCH 14000/18492 | loss=3.9018 | avg_loss=3.9932 | batch_time=0.30s | ETA_epoch=1330s
+2026-08-01 05:49:15 | INFO | EPOCH 14 | BATCH 15000/18492 | loss=3.4737 | avg_loss=3.9948 | batch_time=0.28s | ETA_epoch=990s
+2026-08-01 05:49:16 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 05:54:04 | INFO | EPOCH 14 | BATCH 16000/18492 | loss=3.9326 | avg_loss=3.9958 | batch_time=0.27s | ETA_epoch=685s
+2026-08-01 05:58:51 | INFO | EPOCH 14 | BATCH 17000/18492 | loss=3.5823 | avg_loss=3.9977 | batch_time=0.28s | ETA_epoch=420s
+2026-08-01 06:03:38 | INFO | EPOCH 14 | BATCH 18000/18492 | loss=4.6361 | avg_loss=3.9977 | batch_time=0.28s | ETA_epoch=138s
+2026-08-01 06:05:58 | INFO | EPOCH 14 | BATCH 18492/18492 | loss=4.0603 | avg_loss=3.9978 | batch_time=0.31s | ETA_epoch=0s
+2026-08-01 06:05:59 | INFO | Epoch 14 train done | train_loss=3.9978 | time=5310.6s
+2026-08-01 06:05:59 | INFO | Computing validation loss ...
+2026-08-01 06:06:05 | INFO | val_loss=3.7980
+2026-08-01 06:06:05 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 06:06:25 | INFO |   BLEU-1 = 0.7461
+2026-08-01 06:06:25 | INFO |   BLEU-2 = 0.5777
+2026-08-01 06:06:25 | INFO |   BLEU-3 = 0.4160
+2026-08-01 06:06:25 | INFO |   BLEU-4 = 0.3045
+2026-08-01 06:06:25 | INFO |   METEOR = 0.4826
+2026-08-01 06:06:25 | INFO |   ROUGE-L = 0.4157
+2026-08-01 06:06:25 | INFO |   CIDEr-D = 0.9757
+2026-08-01 06:06:25 | INFO | No BLEU-4 improvement (1 / 10 patience)
+2026-08-01 06:06:26 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 06:06:26 | INFO | EPOCH COMPLETE 14 | train_loss=3.9978 val_loss=3.7980 BLEU-4=0.3045 (best=0.3130) | graphs updated in runs/
+2026-08-01 06:06:26 | INFO | ------------------------------------------------------------------------
+2026-08-01 06:06:26 | INFO | Starting epoch 15 / 79  (tf_ratio=0.739)
+2026-08-01 06:11:14 | INFO | EPOCH 15 | BATCH 1000/18492 | loss=4.3350 | avg_loss=3.9726 | batch_time=0.29s | ETA_epoch=4994s
+2026-08-01 06:16:01 | INFO | EPOCH 15 | BATCH 2000/18492 | loss=3.8205 | avg_loss=3.9839 | batch_time=0.28s | ETA_epoch=4671s
+2026-08-01 06:20:48 | INFO | EPOCH 15 | BATCH 3000/18492 | loss=3.9391 | avg_loss=3.9876 | batch_time=0.30s | ETA_epoch=4607s
+2026-08-01 06:25:35 | INFO | EPOCH 15 | BATCH 4000/18492 | loss=4.2169 | avg_loss=3.9899 | batch_time=0.28s | ETA_epoch=4096s
+2026-08-01 06:30:21 | INFO | EPOCH 15 | BATCH 5000/18492 | loss=3.8248 | avg_loss=3.9951 | batch_time=0.28s | ETA_epoch=3827s
+2026-08-01 06:30:23 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 06:35:10 | INFO | EPOCH 15 | BATCH 6000/18492 | loss=4.1107 | avg_loss=3.9973 | batch_time=0.30s | ETA_epoch=3743s
+2026-08-01 06:39:58 | INFO | EPOCH 15 | BATCH 7000/18492 | loss=3.7402 | avg_loss=4.0001 | batch_time=0.27s | ETA_epoch=3136s
+2026-08-01 06:44:45 | INFO | EPOCH 15 | BATCH 8000/18492 | loss=3.3310 | avg_loss=4.0004 | batch_time=0.28s | ETA_epoch=2986s
+2026-08-01 06:49:31 | INFO | EPOCH 15 | BATCH 9000/18492 | loss=3.5748 | avg_loss=3.9989 | batch_time=0.28s | ETA_epoch=2680s
+2026-08-01 06:54:19 | INFO | EPOCH 15 | BATCH 10000/18492 | loss=3.2908 | avg_loss=3.9979 | batch_time=0.27s | ETA_epoch=2290s
+2026-08-01 06:54:20 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 06:59:06 | INFO | EPOCH 15 | BATCH 11000/18492 | loss=4.2822 | avg_loss=3.9981 | batch_time=0.30s | ETA_epoch=2239s
+2026-08-01 07:03:54 | INFO | EPOCH 15 | BATCH 12000/18492 | loss=3.9798 | avg_loss=3.9984 | batch_time=0.28s | ETA_epoch=1846s
+2026-08-01 07:08:39 | INFO | EPOCH 15 | BATCH 13000/18492 | loss=3.9224 | avg_loss=3.9996 | batch_time=0.27s | ETA_epoch=1499s
+2026-08-01 07:13:27 | INFO | EPOCH 15 | BATCH 14000/18492 | loss=3.9558 | avg_loss=3.9999 | batch_time=0.27s | ETA_epoch=1205s
+2026-08-01 07:18:14 | INFO | EPOCH 15 | BATCH 15000/18492 | loss=3.7586 | avg_loss=4.0001 | batch_time=0.29s | ETA_epoch=1010s
+2026-08-01 07:18:15 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 07:23:04 | INFO | EPOCH 15 | BATCH 16000/18492 | loss=4.0835 | avg_loss=4.0013 | batch_time=0.28s | ETA_epoch=707s
+2026-08-01 07:27:52 | INFO | EPOCH 15 | BATCH 17000/18492 | loss=3.8081 | avg_loss=4.0024 | batch_time=0.28s | ETA_epoch=420s
+2026-08-01 07:32:39 | INFO | EPOCH 15 | BATCH 18000/18492 | loss=4.4765 | avg_loss=4.0035 | batch_time=0.30s | ETA_epoch=150s
+2026-08-01 07:35:00 | INFO | EPOCH 15 | BATCH 18492/18492 | loss=3.9875 | avg_loss=4.0043 | batch_time=0.29s | ETA_epoch=0s
+2026-08-01 07:35:01 | INFO | Epoch 15 train done | train_loss=4.0043 | time=5314.1s
+2026-08-01 07:35:01 | INFO | Computing validation loss ...
+2026-08-01 07:35:07 | INFO | val_loss=3.7978
+2026-08-01 07:35:07 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 07:35:27 | INFO |   BLEU-1 = 0.7484
+2026-08-01 07:35:27 | INFO |   BLEU-2 = 0.5836
+2026-08-01 07:35:27 | INFO |   BLEU-3 = 0.4186
+2026-08-01 07:35:27 | INFO |   BLEU-4 = 0.3037
+2026-08-01 07:35:27 | INFO |   METEOR = 0.4827
+2026-08-01 07:35:27 | INFO |   ROUGE-L = 0.4133
+2026-08-01 07:35:27 | INFO |   CIDEr-D = 0.9549
+2026-08-01 07:35:27 | INFO | No BLEU-4 improvement (2 / 10 patience)
+2026-08-01 07:35:28 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 07:35:29 | INFO | EPOCH COMPLETE 15 | train_loss=4.0043 val_loss=3.7978 BLEU-4=0.3037 (best=0.3130) | graphs updated in runs/
+2026-08-01 07:35:29 | INFO | ------------------------------------------------------------------------
+2026-08-01 07:35:29 | INFO | Starting epoch 16 / 79  (tf_ratio=0.724)
+2026-08-01 07:40:17 | INFO | EPOCH 16 | BATCH 1000/18492 | loss=4.3149 | avg_loss=3.9949 | batch_time=0.29s | ETA_epoch=5156s
+2026-08-01 07:45:06 | INFO | EPOCH 16 | BATCH 2000/18492 | loss=3.5185 | avg_loss=3.9983 | batch_time=0.28s | ETA_epoch=4656s
+2026-08-01 07:49:52 | INFO | EPOCH 16 | BATCH 3000/18492 | loss=3.9775 | avg_loss=3.9995 | batch_time=0.28s | ETA_epoch=4292s
+2026-08-01 07:54:39 | INFO | EPOCH 16 | BATCH 4000/18492 | loss=3.5611 | avg_loss=4.0041 | batch_time=0.27s | ETA_epoch=3916s
+2026-08-01 07:59:27 | INFO | EPOCH 16 | BATCH 5000/18492 | loss=4.3771 | avg_loss=4.0043 | batch_time=0.38s | ETA_epoch=5141s
+2026-08-01 07:59:28 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 08:04:15 | INFO | EPOCH 16 | BATCH 6000/18492 | loss=4.0489 | avg_loss=4.0039 | batch_time=0.28s | ETA_epoch=3498s
+2026-08-01 08:09:02 | INFO | EPOCH 16 | BATCH 7000/18492 | loss=4.3225 | avg_loss=4.0066 | batch_time=0.33s | ETA_epoch=3833s
+2026-08-01 08:13:49 | INFO | EPOCH 16 | BATCH 8000/18492 | loss=3.5550 | avg_loss=4.0078 | batch_time=0.28s | ETA_epoch=2982s
+2026-08-01 08:18:37 | INFO | EPOCH 16 | BATCH 9000/18492 | loss=3.9925 | avg_loss=4.0077 | batch_time=0.28s | ETA_epoch=2663s
+2026-08-01 08:23:23 | INFO | EPOCH 16 | BATCH 10000/18492 | loss=3.6387 | avg_loss=4.0082 | batch_time=0.28s | ETA_epoch=2375s
+2026-08-01 08:23:25 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 08:28:12 | INFO | EPOCH 16 | BATCH 11000/18492 | loss=4.1710 | avg_loss=4.0086 | batch_time=0.29s | ETA_epoch=2143s
+2026-08-01 08:32:59 | INFO | EPOCH 16 | BATCH 12000/18492 | loss=4.1591 | avg_loss=4.0091 | batch_time=0.28s | ETA_epoch=1845s
+2026-08-01 08:37:47 | INFO | EPOCH 16 | BATCH 13000/18492 | loss=4.2270 | avg_loss=4.0107 | batch_time=0.28s | ETA_epoch=1521s
+2026-08-01 08:42:34 | INFO | EPOCH 16 | BATCH 14000/18492 | loss=3.8318 | avg_loss=4.0115 | batch_time=0.28s | ETA_epoch=1244s
+2026-08-01 08:47:22 | INFO | EPOCH 16 | BATCH 15000/18492 | loss=4.6428 | avg_loss=4.0123 | batch_time=0.30s | ETA_epoch=1040s
+2026-08-01 08:47:23 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 08:52:10 | INFO | EPOCH 16 | BATCH 16000/18492 | loss=3.9249 | avg_loss=4.0126 | batch_time=0.30s | ETA_epoch=740s
+2026-08-01 08:56:57 | INFO | EPOCH 16 | BATCH 17000/18492 | loss=4.0809 | avg_loss=4.0134 | batch_time=0.30s | ETA_epoch=449s
+2026-08-01 09:01:45 | INFO | EPOCH 16 | BATCH 18000/18492 | loss=4.3390 | avg_loss=4.0138 | batch_time=0.28s | ETA_epoch=136s
+2026-08-01 09:04:07 | INFO | EPOCH 16 | BATCH 18492/18492 | loss=4.4169 | avg_loss=4.0139 | batch_time=0.28s | ETA_epoch=0s
+2026-08-01 09:04:07 | INFO | Epoch 16 train done | train_loss=4.0139 | time=5318.3s
+2026-08-01 09:04:07 | INFO | Computing validation loss ...
+2026-08-01 09:04:13 | INFO | val_loss=3.8063
+2026-08-01 09:04:13 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 09:04:33 | INFO |   BLEU-1 = 0.7366
+2026-08-01 09:04:33 | INFO |   BLEU-2 = 0.5733
+2026-08-01 09:04:33 | INFO |   BLEU-3 = 0.4151
+2026-08-01 09:04:33 | INFO |   BLEU-4 = 0.3000
+2026-08-01 09:04:33 | INFO |   METEOR = 0.4768
+2026-08-01 09:04:33 | INFO |   ROUGE-L = 0.4179
+2026-08-01 09:04:33 | INFO |   CIDEr-D = 0.9502
+2026-08-01 09:04:33 | INFO | No BLEU-4 improvement (3 / 10 patience)
+2026-08-01 09:04:34 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 09:04:35 | INFO | EPOCH COMPLETE 16 | train_loss=4.0139 val_loss=3.8063 BLEU-4=0.3000 (best=0.3130) | graphs updated in runs/
+2026-08-01 09:04:35 | INFO | ------------------------------------------------------------------------
+2026-08-01 09:04:35 | INFO | Starting epoch 17 / 79  (tf_ratio=0.709)
+2026-08-01 09:09:23 | INFO | EPOCH 17 | BATCH 1000/18492 | loss=3.8116 | avg_loss=3.9947 | batch_time=0.28s | ETA_epoch=4909s
+2026-08-01 09:14:10 | INFO | EPOCH 17 | BATCH 2000/18492 | loss=4.0778 | avg_loss=4.0042 | batch_time=0.28s | ETA_epoch=4640s
+2026-08-01 09:18:59 | INFO | EPOCH 17 | BATCH 3000/18492 | loss=3.8860 | avg_loss=4.0075 | batch_time=0.27s | ETA_epoch=4190s
+2026-08-01 09:23:47 | INFO | EPOCH 17 | BATCH 4000/18492 | loss=4.4676 | avg_loss=4.0120 | batch_time=0.29s | ETA_epoch=4140s
+2026-08-01 09:28:34 | INFO | EPOCH 17 | BATCH 5000/18492 | loss=4.4263 | avg_loss=4.0090 | batch_time=0.32s | ETA_epoch=4272s
+2026-08-01 09:28:35 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 09:33:24 | INFO | EPOCH 17 | BATCH 6000/18492 | loss=3.4351 | avg_loss=4.0111 | batch_time=0.28s | ETA_epoch=3437s
+2026-08-01 09:38:12 | INFO | EPOCH 17 | BATCH 7000/18492 | loss=3.9156 | avg_loss=4.0124 | batch_time=0.29s | ETA_epoch=3373s
+2026-08-01 09:42:59 | INFO | EPOCH 17 | BATCH 8000/18492 | loss=3.6632 | avg_loss=4.0116 | batch_time=0.28s | ETA_epoch=2898s
+2026-08-01 09:47:48 | INFO | EPOCH 17 | BATCH 9000/18492 | loss=3.8097 | avg_loss=4.0144 | batch_time=0.29s | ETA_epoch=2783s
+2026-08-01 09:52:35 | INFO | EPOCH 17 | BATCH 10000/18492 | loss=3.6180 | avg_loss=4.0149 | batch_time=0.28s | ETA_epoch=2357s
+2026-08-01 09:52:36 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 09:57:24 | INFO | EPOCH 17 | BATCH 11000/18492 | loss=3.7734 | avg_loss=4.0142 | batch_time=0.28s | ETA_epoch=2122s
+2026-08-01 10:02:12 | INFO | EPOCH 17 | BATCH 12000/18492 | loss=4.0352 | avg_loss=4.0152 | batch_time=0.30s | ETA_epoch=1921s
+2026-08-01 10:07:00 | INFO | EPOCH 17 | BATCH 13000/18492 | loss=4.0877 | avg_loss=4.0148 | batch_time=0.29s | ETA_epoch=1566s
+2026-08-01 10:11:47 | INFO | EPOCH 17 | BATCH 14000/18492 | loss=4.3461 | avg_loss=4.0155 | batch_time=0.32s | ETA_epoch=1431s
+2026-08-01 10:16:35 | INFO | EPOCH 17 | BATCH 15000/18492 | loss=3.8247 | avg_loss=4.0164 | batch_time=0.28s | ETA_epoch=980s
+2026-08-01 10:16:36 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 10:21:24 | INFO | EPOCH 17 | BATCH 16000/18492 | loss=4.0859 | avg_loss=4.0176 | batch_time=0.32s | ETA_epoch=792s
+2026-08-01 10:26:12 | INFO | EPOCH 17 | BATCH 17000/18492 | loss=3.9928 | avg_loss=4.0172 | batch_time=0.30s | ETA_epoch=443s
+2026-08-01 10:30:59 | INFO | EPOCH 17 | BATCH 18000/18492 | loss=4.1666 | avg_loss=4.0179 | batch_time=0.29s | ETA_epoch=143s
+2026-08-01 10:33:21 | INFO | EPOCH 17 | BATCH 18492/18492 | loss=3.8096 | avg_loss=4.0182 | batch_time=0.28s | ETA_epoch=0s
+2026-08-01 10:33:21 | INFO | Epoch 17 train done | train_loss=4.0182 | time=5326.3s
+2026-08-01 10:33:21 | INFO | Computing validation loss ...
+2026-08-01 10:33:27 | INFO | val_loss=3.8012
+2026-08-01 10:33:27 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 10:33:47 | INFO |   BLEU-1 = 0.7431
+2026-08-01 10:33:47 | INFO |   BLEU-2 = 0.5789
+2026-08-01 10:33:47 | INFO |   BLEU-3 = 0.4157
+2026-08-01 10:33:47 | INFO |   BLEU-4 = 0.3037
+2026-08-01 10:33:47 | INFO |   METEOR = 0.4761
+2026-08-01 10:33:47 | INFO |   ROUGE-L = 0.4148
+2026-08-01 10:33:47 | INFO |   CIDEr-D = 0.9672
+2026-08-01 10:33:47 | INFO | No BLEU-4 improvement (4 / 10 patience)
+2026-08-01 10:33:48 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 10:33:49 | INFO | EPOCH COMPLETE 17 | train_loss=4.0182 val_loss=3.8012 BLEU-4=0.3037 (best=0.3130) | graphs updated in runs/
+2026-08-01 10:33:49 | INFO | ------------------------------------------------------------------------
+2026-08-01 10:33:49 | INFO | Starting epoch 18 / 79  (tf_ratio=0.695)
+2026-08-01 10:38:38 | INFO | EPOCH 18 | BATCH 1000/18492 | loss=4.6490 | avg_loss=3.9997 | batch_time=0.29s | ETA_epoch=5094s
+2026-08-01 10:43:26 | INFO | EPOCH 18 | BATCH 2000/18492 | loss=4.6025 | avg_loss=4.0070 | batch_time=0.30s | ETA_epoch=4980s
+2026-08-01 10:48:14 | INFO | EPOCH 18 | BATCH 3000/18492 | loss=4.0076 | avg_loss=4.0040 | batch_time=0.27s | ETA_epoch=4232s
+2026-08-01 10:53:01 | INFO | EPOCH 18 | BATCH 4000/18492 | loss=4.2007 | avg_loss=4.0145 | batch_time=0.29s | ETA_epoch=4188s
+2026-08-01 10:57:49 | INFO | EPOCH 18 | BATCH 5000/18492 | loss=4.1348 | avg_loss=4.0155 | batch_time=0.36s | ETA_epoch=4903s
+2026-08-01 10:57:50 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 11:02:38 | INFO | EPOCH 18 | BATCH 6000/18492 | loss=3.9664 | avg_loss=4.0133 | batch_time=0.28s | ETA_epoch=3480s
+2026-08-01 11:07:26 | INFO | EPOCH 18 | BATCH 7000/18492 | loss=4.3339 | avg_loss=4.0129 | batch_time=0.27s | ETA_epoch=3145s
+2026-08-01 11:12:14 | INFO | EPOCH 18 | BATCH 8000/18492 | loss=3.8550 | avg_loss=4.0159 | batch_time=0.28s | ETA_epoch=2905s
+2026-08-01 11:17:01 | INFO | EPOCH 18 | BATCH 9000/18492 | loss=4.2623 | avg_loss=4.0170 | batch_time=0.30s | ETA_epoch=2813s
+2026-08-01 11:21:50 | INFO | EPOCH 18 | BATCH 10000/18492 | loss=3.7808 | avg_loss=4.0186 | batch_time=0.27s | ETA_epoch=2324s
+2026-08-01 11:21:51 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 11:26:39 | INFO | EPOCH 18 | BATCH 11000/18492 | loss=3.6274 | avg_loss=4.0212 | batch_time=0.29s | ETA_epoch=2203s
+2026-08-01 11:31:27 | INFO | EPOCH 18 | BATCH 12000/18492 | loss=3.5962 | avg_loss=4.0221 | batch_time=0.27s | ETA_epoch=1773s
+2026-08-01 11:36:15 | INFO | EPOCH 18 | BATCH 13000/18492 | loss=4.5111 | avg_loss=4.0237 | batch_time=0.28s | ETA_epoch=1533s
+2026-08-01 11:41:02 | INFO | EPOCH 18 | BATCH 14000/18492 | loss=4.2990 | avg_loss=4.0240 | batch_time=0.30s | ETA_epoch=1327s
+2026-08-01 11:45:50 | INFO | EPOCH 18 | BATCH 15000/18492 | loss=4.2214 | avg_loss=4.0247 | batch_time=0.30s | ETA_epoch=1065s
+2026-08-01 11:45:51 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 11:50:39 | INFO | EPOCH 18 | BATCH 16000/18492 | loss=3.9856 | avg_loss=4.0261 | batch_time=0.29s | ETA_epoch=723s
+2026-08-01 11:55:27 | INFO | EPOCH 18 | BATCH 17000/18492 | loss=4.0349 | avg_loss=4.0274 | batch_time=0.28s | ETA_epoch=416s
+2026-08-01 12:00:14 | INFO | EPOCH 18 | BATCH 18000/18492 | loss=3.7331 | avg_loss=4.0281 | batch_time=0.27s | ETA_epoch=132s
+2026-08-01 12:02:36 | INFO | EPOCH 18 | BATCH 18492/18492 | loss=4.0600 | avg_loss=4.0281 | batch_time=0.28s | ETA_epoch=0s
+2026-08-01 12:02:36 | INFO | Epoch 18 train done | train_loss=4.0281 | time=5327.0s
+2026-08-01 12:02:36 | INFO | Computing validation loss ...
+2026-08-01 12:02:43 | INFO | val_loss=3.8058
+2026-08-01 12:02:43 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 12:03:03 | INFO |   BLEU-1 = 0.7479
+2026-08-01 12:03:03 | INFO |   BLEU-2 = 0.5859
+2026-08-01 12:03:03 | INFO |   BLEU-3 = 0.4250
+2026-08-01 12:03:03 | INFO |   BLEU-4 = 0.3154
+2026-08-01 12:03:03 | INFO |   METEOR = 0.4815
+2026-08-01 12:03:03 | INFO |   ROUGE-L = 0.4162
+2026-08-01 12:03:03 | INFO |   CIDEr-D = 0.9814
+2026-08-01 12:03:03 | INFO | ★ New best BLEU-4: 0.3154
+2026-08-01 12:03:04 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 12:03:04 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-08-01 12:03:05 | INFO | EPOCH COMPLETE 18 | train_loss=4.0281 val_loss=3.8058 BLEU-4=0.3154 (best=0.3154) | graphs updated in runs/
+2026-08-01 12:03:05 | INFO | ------------------------------------------------------------------------
+2026-08-01 12:03:05 | INFO | Starting epoch 19 / 79  (tf_ratio=0.681)
+2026-08-01 12:07:52 | INFO | EPOCH 19 | BATCH 1000/18492 | loss=4.5866 | avg_loss=4.0148 | batch_time=0.28s | ETA_epoch=4951s
+2026-08-01 12:12:41 | INFO | EPOCH 19 | BATCH 2000/18492 | loss=3.4425 | avg_loss=4.0227 | batch_time=0.27s | ETA_epoch=4390s
+2026-08-01 12:17:28 | INFO | EPOCH 19 | BATCH 3000/18492 | loss=4.0466 | avg_loss=4.0214 | batch_time=0.28s | ETA_epoch=4348s
+2026-08-01 12:22:17 | INFO | EPOCH 19 | BATCH 4000/18492 | loss=3.7141 | avg_loss=4.0286 | batch_time=0.28s | ETA_epoch=4061s
+2026-08-01 12:27:05 | INFO | EPOCH 19 | BATCH 5000/18492 | loss=4.1331 | avg_loss=4.0343 | batch_time=0.30s | ETA_epoch=4014s
+2026-08-01 12:27:06 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 12:31:55 | INFO | EPOCH 19 | BATCH 6000/18492 | loss=3.6553 | avg_loss=4.0358 | batch_time=0.28s | ETA_epoch=3558s
+2026-08-01 12:36:42 | INFO | EPOCH 19 | BATCH 7000/18492 | loss=3.7792 | avg_loss=4.0326 | batch_time=0.27s | ETA_epoch=3144s
+2026-08-01 12:41:31 | INFO | EPOCH 19 | BATCH 8000/18492 | loss=4.5790 | avg_loss=4.0348 | batch_time=0.30s | ETA_epoch=3152s
+2026-08-01 12:46:19 | INFO | EPOCH 19 | BATCH 9000/18492 | loss=3.7840 | avg_loss=4.0360 | batch_time=0.29s | ETA_epoch=2735s
+2026-08-01 12:51:07 | INFO | EPOCH 19 | BATCH 10000/18492 | loss=4.1463 | avg_loss=4.0356 | batch_time=0.29s | ETA_epoch=2432s
+2026-08-01 12:51:09 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 12:55:57 | INFO | EPOCH 19 | BATCH 11000/18492 | loss=3.8079 | avg_loss=4.0365 | batch_time=0.27s | ETA_epoch=2052s
+2026-08-01 13:00:45 | INFO | EPOCH 19 | BATCH 12000/18492 | loss=4.2943 | avg_loss=4.0368 | batch_time=0.28s | ETA_epoch=1809s
+2026-08-01 13:05:33 | INFO | EPOCH 19 | BATCH 13000/18492 | loss=4.2753 | avg_loss=4.0366 | batch_time=0.28s | ETA_epoch=1517s
+2026-08-01 13:10:21 | INFO | EPOCH 19 | BATCH 14000/18492 | loss=3.6924 | avg_loss=4.0362 | batch_time=0.28s | ETA_epoch=1259s
+2026-08-01 13:15:08 | INFO | EPOCH 19 | BATCH 15000/18492 | loss=4.5268 | avg_loss=4.0379 | batch_time=0.30s | ETA_epoch=1045s
+2026-08-01 13:15:10 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 13:19:57 | INFO | EPOCH 19 | BATCH 16000/18492 | loss=3.7783 | avg_loss=4.0377 | batch_time=0.28s | ETA_epoch=693s
+2026-08-01 13:24:45 | INFO | EPOCH 19 | BATCH 17000/18492 | loss=4.1476 | avg_loss=4.0381 | batch_time=0.29s | ETA_epoch=426s
+2026-08-01 13:29:33 | INFO | EPOCH 19 | BATCH 18000/18492 | loss=4.0070 | avg_loss=4.0388 | batch_time=0.29s | ETA_epoch=144s
+2026-08-01 13:31:55 | INFO | EPOCH 19 | BATCH 18492/18492 | loss=3.9561 | avg_loss=4.0397 | batch_time=0.28s | ETA_epoch=0s
+2026-08-01 13:31:55 | INFO | Epoch 19 train done | train_loss=4.0397 | time=5330.0s
+2026-08-01 13:31:55 | INFO | Computing validation loss ...
+2026-08-01 13:32:01 | INFO | val_loss=3.8134
+2026-08-01 13:32:01 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 13:32:21 | INFO |   BLEU-1 = 0.7529
+2026-08-01 13:32:21 | INFO |   BLEU-2 = 0.5955
+2026-08-01 13:32:21 | INFO |   BLEU-3 = 0.4318
+2026-08-01 13:32:21 | INFO |   BLEU-4 = 0.3150
+2026-08-01 13:32:21 | INFO |   METEOR = 0.4783
+2026-08-01 13:32:21 | INFO |   ROUGE-L = 0.4166
+2026-08-01 13:32:21 | INFO |   CIDEr-D = 0.9969
+2026-08-01 13:32:21 | INFO | No BLEU-4 improvement (1 / 10 patience)
+2026-08-01 13:32:22 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 13:32:23 | INFO | EPOCH COMPLETE 19 | train_loss=4.0397 val_loss=3.8134 BLEU-4=0.3150 (best=0.3154) | graphs updated in runs/
+2026-08-01 13:32:23 | INFO | ------------------------------------------------------------------------
+2026-08-01 13:32:23 | INFO | Starting epoch 20 / 79  (tf_ratio=0.668)
+2026-08-01 13:37:11 | INFO | EPOCH 20 | BATCH 1000/18492 | loss=3.7917 | avg_loss=4.0440 | batch_time=0.29s | ETA_epoch=5022s
+2026-08-01 13:42:00 | INFO | EPOCH 20 | BATCH 2000/18492 | loss=4.0246 | avg_loss=4.0435 | batch_time=0.29s | ETA_epoch=4735s
+2026-08-01 13:46:48 | INFO | EPOCH 20 | BATCH 3000/18492 | loss=4.2677 | avg_loss=4.0362 | batch_time=0.28s | ETA_epoch=4328s
+2026-08-01 13:51:36 | INFO | EPOCH 20 | BATCH 4000/18492 | loss=4.1009 | avg_loss=4.0374 | batch_time=0.29s | ETA_epoch=4171s
+2026-08-01 13:56:24 | INFO | EPOCH 20 | BATCH 5000/18492 | loss=4.0092 | avg_loss=4.0403 | batch_time=0.28s | ETA_epoch=3777s
+2026-08-01 13:56:25 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 14:01:13 | INFO | EPOCH 20 | BATCH 6000/18492 | loss=4.6027 | avg_loss=4.0422 | batch_time=0.31s | ETA_epoch=3827s
+2026-08-01 14:06:02 | INFO | EPOCH 20 | BATCH 7000/18492 | loss=3.8797 | avg_loss=4.0457 | batch_time=0.32s | ETA_epoch=3711s
+2026-08-01 14:10:49 | INFO | EPOCH 20 | BATCH 8000/18492 | loss=3.5403 | avg_loss=4.0450 | batch_time=0.27s | ETA_epoch=2881s
+2026-08-01 14:15:36 | INFO | EPOCH 20 | BATCH 9000/18492 | loss=3.6287 | avg_loss=4.0462 | batch_time=0.29s | ETA_epoch=2720s
+2026-08-01 14:20:24 | INFO | EPOCH 20 | BATCH 10000/18492 | loss=4.7640 | avg_loss=4.0450 | batch_time=0.28s | ETA_epoch=2414s
+2026-08-01 14:20:25 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 14:25:13 | INFO | EPOCH 20 | BATCH 11000/18492 | loss=4.1819 | avg_loss=4.0460 | batch_time=0.28s | ETA_epoch=2065s
+2026-08-01 14:30:01 | INFO | EPOCH 20 | BATCH 12000/18492 | loss=4.6726 | avg_loss=4.0464 | batch_time=0.29s | ETA_epoch=1871s
+2026-08-01 14:34:49 | INFO | EPOCH 20 | BATCH 13000/18492 | loss=3.6826 | avg_loss=4.0469 | batch_time=0.28s | ETA_epoch=1528s
+2026-08-01 14:39:38 | INFO | EPOCH 20 | BATCH 14000/18492 | loss=4.1224 | avg_loss=4.0474 | batch_time=0.29s | ETA_epoch=1302s
+2026-08-01 14:44:26 | INFO | EPOCH 20 | BATCH 15000/18492 | loss=4.4843 | avg_loss=4.0478 | batch_time=0.26s | ETA_epoch=924s
+2026-08-01 14:44:27 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 14:49:15 | INFO | EPOCH 20 | BATCH 16000/18492 | loss=4.6062 | avg_loss=4.0483 | batch_time=0.28s | ETA_epoch=692s
+2026-08-01 14:54:03 | INFO | EPOCH 20 | BATCH 17000/18492 | loss=4.4488 | avg_loss=4.0489 | batch_time=0.30s | ETA_epoch=442s
+2026-08-01 14:58:52 | INFO | EPOCH 20 | BATCH 18000/18492 | loss=3.9513 | avg_loss=4.0490 | batch_time=0.28s | ETA_epoch=139s
+2026-08-01 15:01:13 | INFO | EPOCH 20 | BATCH 18492/18492 | loss=4.1962 | avg_loss=4.0492 | batch_time=0.27s | ETA_epoch=0s
+2026-08-01 15:01:13 | INFO | Epoch 20 train done | train_loss=4.0492 | time=5330.8s
+2026-08-01 15:01:13 | INFO | Computing validation loss ...
+2026-08-01 15:01:20 | INFO | val_loss=3.8137
+2026-08-01 15:01:20 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 15:01:40 | INFO |   BLEU-1 = 0.7490
+2026-08-01 15:01:40 | INFO |   BLEU-2 = 0.5858
+2026-08-01 15:01:40 | INFO |   BLEU-3 = 0.4271
+2026-08-01 15:01:40 | INFO |   BLEU-4 = 0.3172
+2026-08-01 15:01:40 | INFO |   METEOR = 0.4776
+2026-08-01 15:01:40 | INFO |   ROUGE-L = 0.4230
+2026-08-01 15:01:40 | INFO |   CIDEr-D = 1.0055
+2026-08-01 15:01:40 | INFO | ★ New best BLEU-4: 0.3172
+2026-08-01 15:01:42 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 15:01:42 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-08-01 15:01:42 | INFO | EPOCH COMPLETE 20 | train_loss=4.0492 val_loss=3.8137 BLEU-4=0.3172 (best=0.3172) | graphs updated in runs/
+2026-08-01 15:01:42 | INFO | ------------------------------------------------------------------------
+2026-08-01 15:01:42 | INFO | Starting epoch 21 / 79  (tf_ratio=0.654)
+2026-08-01 15:06:30 | INFO | EPOCH 21 | BATCH 1000/18492 | loss=4.1114 | avg_loss=4.0317 | batch_time=0.28s | ETA_epoch=4827s
+2026-08-01 15:11:19 | INFO | EPOCH 21 | BATCH 2000/18492 | loss=3.6427 | avg_loss=4.0357 | batch_time=0.27s | ETA_epoch=4490s
+2026-08-01 15:16:07 | INFO | EPOCH 21 | BATCH 3000/18492 | loss=3.5643 | avg_loss=4.0420 | batch_time=0.28s | ETA_epoch=4261s
+2026-08-01 15:20:55 | INFO | EPOCH 21 | BATCH 4000/18492 | loss=4.8713 | avg_loss=4.0444 | batch_time=0.30s | ETA_epoch=4315s
+2026-08-01 15:25:44 | INFO | EPOCH 21 | BATCH 5000/18492 | loss=4.2680 | avg_loss=4.0453 | batch_time=0.28s | ETA_epoch=3785s
+2026-08-01 15:25:45 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 15:30:32 | INFO | EPOCH 21 | BATCH 6000/18492 | loss=4.2371 | avg_loss=4.0498 | batch_time=0.29s | ETA_epoch=3627s
+2026-08-01 15:35:21 | INFO | EPOCH 21 | BATCH 7000/18492 | loss=3.8120 | avg_loss=4.0515 | batch_time=0.31s | ETA_epoch=3531s
+2026-08-01 15:40:10 | INFO | EPOCH 21 | BATCH 8000/18492 | loss=3.9686 | avg_loss=4.0536 | batch_time=0.28s | ETA_epoch=2926s
+2026-08-01 15:44:58 | INFO | EPOCH 21 | BATCH 9000/18492 | loss=3.7104 | avg_loss=4.0550 | batch_time=0.29s | ETA_epoch=2721s
+2026-08-01 15:49:48 | INFO | EPOCH 21 | BATCH 10000/18492 | loss=3.3315 | avg_loss=4.0567 | batch_time=0.27s | ETA_epoch=2301s
+2026-08-01 15:49:49 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 15:54:36 | INFO | EPOCH 21 | BATCH 11000/18492 | loss=4.5174 | avg_loss=4.0573 | batch_time=0.29s | ETA_epoch=2184s
+2026-08-01 15:59:25 | INFO | EPOCH 21 | BATCH 12000/18492 | loss=4.6254 | avg_loss=4.0576 | batch_time=0.30s | ETA_epoch=1963s
+2026-08-01 16:04:13 | INFO | EPOCH 21 | BATCH 13000/18492 | loss=3.8004 | avg_loss=4.0576 | batch_time=0.27s | ETA_epoch=1466s
+2026-08-01 16:09:02 | INFO | EPOCH 21 | BATCH 14000/18492 | loss=4.0965 | avg_loss=4.0580 | batch_time=0.29s | ETA_epoch=1308s
+2026-08-01 16:13:49 | INFO | EPOCH 21 | BATCH 15000/18492 | loss=4.1583 | avg_loss=4.0601 | batch_time=0.31s | ETA_epoch=1065s
+2026-08-01 16:13:51 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 16:18:38 | INFO | EPOCH 21 | BATCH 16000/18492 | loss=3.5902 | avg_loss=4.0598 | batch_time=0.27s | ETA_epoch=673s
+2026-08-01 16:23:28 | INFO | EPOCH 21 | BATCH 17000/18492 | loss=4.9081 | avg_loss=4.0610 | batch_time=0.31s | ETA_epoch=467s
+2026-08-01 16:28:16 | INFO | EPOCH 21 | BATCH 18000/18492 | loss=4.3412 | avg_loss=4.0614 | batch_time=0.29s | ETA_epoch=142s
+2026-08-01 16:30:39 | INFO | EPOCH 21 | BATCH 18492/18492 | loss=4.0033 | avg_loss=4.0621 | batch_time=0.28s | ETA_epoch=0s
+2026-08-01 16:30:39 | INFO | Epoch 21 train done | train_loss=4.0621 | time=5336.7s
+2026-08-01 16:30:39 | INFO | Computing validation loss ...
+2026-08-01 16:30:46 | INFO | val_loss=3.8191
+2026-08-01 16:30:46 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 16:31:05 | INFO |   BLEU-1 = 0.7495
+2026-08-01 16:31:05 | INFO |   BLEU-2 = 0.5868
+2026-08-01 16:31:05 | INFO |   BLEU-3 = 0.4259
+2026-08-01 16:31:05 | INFO |   BLEU-4 = 0.3062
+2026-08-01 16:31:05 | INFO |   METEOR = 0.4815
+2026-08-01 16:31:05 | INFO |   ROUGE-L = 0.4097
+2026-08-01 16:31:05 | INFO |   CIDEr-D = 0.9851
+2026-08-01 16:31:05 | INFO | No BLEU-4 improvement (1 / 10 patience)
+2026-08-01 16:31:06 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 16:31:07 | INFO | EPOCH COMPLETE 21 | train_loss=4.0621 val_loss=3.8191 BLEU-4=0.3062 (best=0.3172) | graphs updated in runs/
+2026-08-01 16:31:07 | INFO | ------------------------------------------------------------------------
+2026-08-01 16:31:07 | INFO | Starting epoch 22 / 79  (tf_ratio=0.641)
+2026-08-01 16:35:56 | INFO | EPOCH 22 | BATCH 1000/18492 | loss=3.7873 | avg_loss=4.0382 | batch_time=0.28s | ETA_epoch=4829s
+2026-08-01 16:40:46 | INFO | EPOCH 22 | BATCH 2000/18492 | loss=3.7793 | avg_loss=4.0506 | batch_time=0.28s | ETA_epoch=4676s
+2026-08-01 16:45:34 | INFO | EPOCH 22 | BATCH 3000/18492 | loss=3.7524 | avg_loss=4.0540 | batch_time=0.28s | ETA_epoch=4413s
+2026-08-01 16:50:22 | INFO | EPOCH 22 | BATCH 4000/18492 | loss=4.1024 | avg_loss=4.0493 | batch_time=0.28s | ETA_epoch=4027s
+2026-08-01 16:55:11 | INFO | EPOCH 22 | BATCH 5000/18492 | loss=4.5572 | avg_loss=4.0500 | batch_time=0.28s | ETA_epoch=3814s
+2026-08-01 16:55:12 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 17:00:01 | INFO | EPOCH 22 | BATCH 6000/18492 | loss=3.9450 | avg_loss=4.0518 | batch_time=0.34s | ETA_epoch=4195s
+2026-08-01 17:04:49 | INFO | EPOCH 22 | BATCH 7000/18492 | loss=4.1425 | avg_loss=4.0544 | batch_time=0.30s | ETA_epoch=3422s
+2026-08-01 17:09:37 | INFO | EPOCH 22 | BATCH 8000/18492 | loss=3.7442 | avg_loss=4.0549 | batch_time=0.29s | ETA_epoch=3002s
+2026-08-01 17:14:25 | INFO | EPOCH 22 | BATCH 9000/18492 | loss=4.2821 | avg_loss=4.0562 | batch_time=0.28s | ETA_epoch=2694s
+2026-08-01 17:19:14 | INFO | EPOCH 22 | BATCH 10000/18492 | loss=3.4929 | avg_loss=4.0590 | batch_time=0.28s | ETA_epoch=2405s
+2026-08-01 17:19:15 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 17:24:03 | INFO | EPOCH 22 | BATCH 11000/18492 | loss=4.0174 | avg_loss=4.0599 | batch_time=0.28s | ETA_epoch=2108s
+2026-08-01 17:28:52 | INFO | EPOCH 22 | BATCH 12000/18492 | loss=3.8407 | avg_loss=4.0632 | batch_time=0.28s | ETA_epoch=1831s
+2026-08-01 17:33:41 | INFO | EPOCH 22 | BATCH 13000/18492 | loss=3.8761 | avg_loss=4.0644 | batch_time=0.27s | ETA_epoch=1494s
+2026-08-01 17:38:30 | INFO | EPOCH 22 | BATCH 14000/18492 | loss=4.4765 | avg_loss=4.0651 | batch_time=0.29s | ETA_epoch=1308s
+2026-08-01 17:43:17 | INFO | EPOCH 22 | BATCH 15000/18492 | loss=4.0098 | avg_loss=4.0647 | batch_time=0.28s | ETA_epoch=971s
+2026-08-01 17:43:19 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 17:48:07 | INFO | EPOCH 22 | BATCH 16000/18492 | loss=4.0979 | avg_loss=4.0651 | batch_time=0.28s | ETA_epoch=698s
+2026-08-01 17:52:55 | INFO | EPOCH 22 | BATCH 17000/18492 | loss=3.8178 | avg_loss=4.0653 | batch_time=0.28s | ETA_epoch=415s
+2026-08-01 17:57:43 | INFO | EPOCH 22 | BATCH 18000/18492 | loss=4.5114 | avg_loss=4.0661 | batch_time=0.28s | ETA_epoch=140s
+2026-08-01 18:00:04 | INFO | EPOCH 22 | BATCH 18492/18492 | loss=3.5629 | avg_loss=4.0670 | batch_time=0.29s | ETA_epoch=0s
+2026-08-01 18:00:05 | INFO | Epoch 22 train done | train_loss=4.0670 | time=5337.6s
+2026-08-01 18:00:05 | INFO | Computing validation loss ...
+2026-08-01 18:00:11 | INFO | val_loss=3.8329
+2026-08-01 18:00:11 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 18:00:31 | INFO |   BLEU-1 = 0.7524
+2026-08-01 18:00:31 | INFO |   BLEU-2 = 0.5930
+2026-08-01 18:00:31 | INFO |   BLEU-3 = 0.4359
+2026-08-01 18:00:31 | INFO |   BLEU-4 = 0.3218
+2026-08-01 18:00:31 | INFO |   METEOR = 0.4785
+2026-08-01 18:00:31 | INFO |   ROUGE-L = 0.4240
+2026-08-01 18:00:31 | INFO |   CIDEr-D = 0.9992
+2026-08-01 18:00:31 | INFO | ★ New best BLEU-4: 0.3218
+2026-08-01 18:00:33 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 18:00:33 | INFO | Saved best checkpoint → checkpoints/best_model.pth
+2026-08-01 18:00:33 | INFO | EPOCH COMPLETE 22 | train_loss=4.0670 val_loss=3.8329 BLEU-4=0.3218 (best=0.3218) | graphs updated in runs/
+2026-08-01 18:00:33 | INFO | ------------------------------------------------------------------------
+2026-08-01 18:00:33 | INFO | Starting epoch 23 / 79  (tf_ratio=0.628)
+2026-08-01 18:05:23 | INFO | EPOCH 23 | BATCH 1000/18492 | loss=4.1041 | avg_loss=4.0583 | batch_time=0.28s | ETA_epoch=4927s
+2026-08-01 18:10:13 | INFO | EPOCH 23 | BATCH 2000/18492 | loss=3.6427 | avg_loss=4.0617 | batch_time=0.28s | ETA_epoch=4569s
+2026-08-01 18:15:02 | INFO | EPOCH 23 | BATCH 3000/18492 | loss=3.8020 | avg_loss=4.0688 | batch_time=0.27s | ETA_epoch=4219s
+2026-08-01 18:19:52 | INFO | EPOCH 23 | BATCH 4000/18492 | loss=4.0903 | avg_loss=4.0696 | batch_time=0.34s | ETA_epoch=4989s
+2026-08-01 18:24:40 | INFO | EPOCH 23 | BATCH 5000/18492 | loss=4.2641 | avg_loss=4.0683 | batch_time=0.29s | ETA_epoch=3885s
+2026-08-01 18:24:41 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 18:29:29 | INFO | EPOCH 23 | BATCH 6000/18492 | loss=3.5841 | avg_loss=4.0672 | batch_time=0.28s | ETA_epoch=3532s
+2026-08-01 18:34:18 | INFO | EPOCH 23 | BATCH 7000/18492 | loss=4.5502 | avg_loss=4.0708 | batch_time=0.30s | ETA_epoch=3391s
+2026-08-01 18:39:07 | INFO | EPOCH 23 | BATCH 8000/18492 | loss=3.9568 | avg_loss=4.0712 | batch_time=0.30s | ETA_epoch=3141s
+2026-08-01 18:43:56 | INFO | EPOCH 23 | BATCH 9000/18492 | loss=3.5148 | avg_loss=4.0738 | batch_time=0.29s | ETA_epoch=2738s
+2026-08-01 18:48:43 | INFO | EPOCH 23 | BATCH 10000/18492 | loss=3.3280 | avg_loss=4.0751 | batch_time=0.27s | ETA_epoch=2258s
+2026-08-01 18:48:44 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 18:53:32 | INFO | EPOCH 23 | BATCH 11000/18492 | loss=4.1068 | avg_loss=4.0740 | batch_time=0.32s | ETA_epoch=2421s
+2026-08-01 18:58:21 | INFO | EPOCH 23 | BATCH 12000/18492 | loss=3.4764 | avg_loss=4.0749 | batch_time=0.27s | ETA_epoch=1777s
+2026-08-01 19:03:10 | INFO | EPOCH 23 | BATCH 13000/18492 | loss=4.0765 | avg_loss=4.0747 | batch_time=0.28s | ETA_epoch=1536s
+2026-08-01 19:07:59 | INFO | EPOCH 23 | BATCH 14000/18492 | loss=4.2530 | avg_loss=4.0760 | batch_time=0.28s | ETA_epoch=1273s
+2026-08-01 19:12:48 | INFO | EPOCH 23 | BATCH 15000/18492 | loss=3.6748 | avg_loss=4.0766 | batch_time=0.28s | ETA_epoch=971s
+2026-08-01 19:12:49 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 19:17:37 | INFO | EPOCH 23 | BATCH 16000/18492 | loss=3.9918 | avg_loss=4.0771 | batch_time=0.29s | ETA_epoch=716s
+2026-08-01 19:22:25 | INFO | EPOCH 23 | BATCH 17000/18492 | loss=4.4774 | avg_loss=4.0779 | batch_time=0.28s | ETA_epoch=417s
+2026-08-01 19:27:14 | INFO | EPOCH 23 | BATCH 18000/18492 | loss=4.6566 | avg_loss=4.0784 | batch_time=0.27s | ETA_epoch=133s
+2026-08-01 19:29:36 | INFO | EPOCH 23 | BATCH 18492/18492 | loss=4.3182 | avg_loss=4.0784 | batch_time=0.28s | ETA_epoch=0s
+2026-08-01 19:29:36 | INFO | Epoch 23 train done | train_loss=4.0784 | time=5342.2s
+2026-08-01 19:29:36 | INFO | Computing validation loss ...
+2026-08-01 19:29:42 | INFO | val_loss=3.8268
+2026-08-01 19:29:42 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 19:30:02 | INFO |   BLEU-1 = 0.7448
+2026-08-01 19:30:02 | INFO |   BLEU-2 = 0.5850
+2026-08-01 19:30:02 | INFO |   BLEU-3 = 0.4293
+2026-08-01 19:30:02 | INFO |   BLEU-4 = 0.3143
+2026-08-01 19:30:02 | INFO |   METEOR = 0.4790
+2026-08-01 19:30:02 | INFO |   ROUGE-L = 0.4191
+2026-08-01 19:30:02 | INFO |   CIDEr-D = 0.9822
+2026-08-01 19:30:02 | INFO | No BLEU-4 improvement (1 / 10 patience)
+2026-08-01 19:30:03 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 19:30:03 | INFO | EPOCH COMPLETE 23 | train_loss=4.0784 val_loss=3.8268 BLEU-4=0.3143 (best=0.3218) | graphs updated in runs/
+2026-08-01 19:30:03 | INFO | ------------------------------------------------------------------------
+2026-08-01 19:30:03 | INFO | Starting epoch 24 / 79  (tf_ratio=0.616)
+2026-08-01 19:34:54 | INFO | EPOCH 24 | BATCH 1000/18492 | loss=3.9611 | avg_loss=4.0809 | batch_time=0.28s | ETA_epoch=4861s
+2026-08-01 19:39:43 | INFO | EPOCH 24 | BATCH 2000/18492 | loss=3.5683 | avg_loss=4.0787 | batch_time=0.29s | ETA_epoch=4724s
+2026-08-01 19:44:31 | INFO | EPOCH 24 | BATCH 3000/18492 | loss=4.1127 | avg_loss=4.0801 | batch_time=0.29s | ETA_epoch=4504s
+2026-08-01 19:49:20 | INFO | EPOCH 24 | BATCH 4000/18492 | loss=3.9814 | avg_loss=4.0786 | batch_time=0.27s | ETA_epoch=3983s
+2026-08-01 19:54:09 | INFO | EPOCH 24 | BATCH 5000/18492 | loss=4.2302 | avg_loss=4.0744 | batch_time=0.28s | ETA_epoch=3771s
+2026-08-01 19:54:10 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 19:58:58 | INFO | EPOCH 24 | BATCH 6000/18492 | loss=3.7134 | avg_loss=4.0788 | batch_time=0.27s | ETA_epoch=3423s
+2026-08-01 20:03:47 | INFO | EPOCH 24 | BATCH 7000/18492 | loss=4.0013 | avg_loss=4.0817 | batch_time=0.29s | ETA_epoch=3322s
+2026-08-01 20:08:35 | INFO | EPOCH 24 | BATCH 8000/18492 | loss=4.0185 | avg_loss=4.0805 | batch_time=0.29s | ETA_epoch=3000s
+2026-08-01 20:13:24 | INFO | EPOCH 24 | BATCH 9000/18492 | loss=4.0576 | avg_loss=4.0821 | batch_time=0.28s | ETA_epoch=2658s
+2026-08-01 20:18:13 | INFO | EPOCH 24 | BATCH 10000/18492 | loss=3.8878 | avg_loss=4.0818 | batch_time=0.27s | ETA_epoch=2326s
+2026-08-01 20:18:14 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 20:23:02 | INFO | EPOCH 24 | BATCH 11000/18492 | loss=4.3955 | avg_loss=4.0822 | batch_time=0.30s | ETA_epoch=2257s
+2026-08-01 20:27:51 | INFO | EPOCH 24 | BATCH 12000/18492 | loss=3.9588 | avg_loss=4.0829 | batch_time=0.30s | ETA_epoch=1942s
+2026-08-01 20:32:40 | INFO | EPOCH 24 | BATCH 13000/18492 | loss=4.5903 | avg_loss=4.0826 | batch_time=0.29s | ETA_epoch=1595s
+2026-08-01 20:37:29 | INFO | EPOCH 24 | BATCH 14000/18492 | loss=4.1606 | avg_loss=4.0851 | batch_time=0.29s | ETA_epoch=1308s
+2026-08-01 20:42:17 | INFO | EPOCH 24 | BATCH 15000/18492 | loss=4.1832 | avg_loss=4.0855 | batch_time=0.29s | ETA_epoch=1020s
+2026-08-01 20:42:18 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 20:47:06 | INFO | EPOCH 24 | BATCH 16000/18492 | loss=3.8520 | avg_loss=4.0860 | batch_time=0.28s | ETA_epoch=692s
+2026-08-01 20:51:56 | INFO | EPOCH 24 | BATCH 17000/18492 | loss=3.6887 | avg_loss=4.0880 | batch_time=0.28s | ETA_epoch=416s
+2026-08-01 20:56:46 | INFO | EPOCH 24 | BATCH 18000/18492 | loss=3.8048 | avg_loss=4.0876 | batch_time=0.29s | ETA_epoch=140s
+2026-08-01 20:59:08 | INFO | EPOCH 24 | BATCH 18492/18492 | loss=4.2962 | avg_loss=4.0883 | batch_time=0.29s | ETA_epoch=0s
+2026-08-01 20:59:08 | INFO | Epoch 24 train done | train_loss=4.0883 | time=5344.8s
+2026-08-01 20:59:08 | INFO | Computing validation loss ...
+2026-08-01 20:59:15 | INFO | val_loss=3.8378
+2026-08-01 20:59:15 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 20:59:35 | INFO |   BLEU-1 = 0.7404
+2026-08-01 20:59:35 | INFO |   BLEU-2 = 0.5783
+2026-08-01 20:59:35 | INFO |   BLEU-3 = 0.4158
+2026-08-01 20:59:35 | INFO |   BLEU-4 = 0.3045
+2026-08-01 20:59:35 | INFO |   METEOR = 0.4751
+2026-08-01 20:59:35 | INFO |   ROUGE-L = 0.4099
+2026-08-01 20:59:35 | INFO |   CIDEr-D = 0.9543
+2026-08-01 20:59:35 | INFO | No BLEU-4 improvement (2 / 10 patience)
+2026-08-01 20:59:36 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 20:59:36 | INFO | EPOCH COMPLETE 24 | train_loss=4.0883 val_loss=3.8378 BLEU-4=0.3045 (best=0.3218) | graphs updated in runs/
+2026-08-01 20:59:36 | INFO | ------------------------------------------------------------------------
+2026-08-01 20:59:36 | INFO | Starting epoch 25 / 79  (tf_ratio=0.603)
+2026-08-01 21:04:25 | INFO | EPOCH 25 | BATCH 1000/18492 | loss=3.7211 | avg_loss=4.0628 | batch_time=0.28s | ETA_epoch=4819s
+2026-08-01 21:09:14 | INFO | EPOCH 25 | BATCH 2000/18492 | loss=4.0503 | avg_loss=4.0716 | batch_time=0.28s | ETA_epoch=4679s
+2026-08-01 21:14:02 | INFO | EPOCH 25 | BATCH 3000/18492 | loss=4.2139 | avg_loss=4.0707 | batch_time=0.27s | ETA_epoch=4240s
+2026-08-01 21:18:52 | INFO | EPOCH 25 | BATCH 4000/18492 | loss=4.3640 | avg_loss=4.0754 | batch_time=0.28s | ETA_epoch=4093s
+2026-08-01 21:23:41 | INFO | EPOCH 25 | BATCH 5000/18492 | loss=4.1223 | avg_loss=4.0765 | batch_time=0.28s | ETA_epoch=3772s
+2026-08-01 21:23:42 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 21:28:31 | INFO | EPOCH 25 | BATCH 6000/18492 | loss=3.9280 | avg_loss=4.0811 | batch_time=0.28s | ETA_epoch=3463s
+2026-08-01 21:33:19 | INFO | EPOCH 25 | BATCH 7000/18492 | loss=4.1959 | avg_loss=4.0822 | batch_time=0.28s | ETA_epoch=3230s
+2026-08-01 21:38:08 | INFO | EPOCH 25 | BATCH 8000/18492 | loss=4.5313 | avg_loss=4.0827 | batch_time=0.30s | ETA_epoch=3110s
+2026-08-01 21:42:57 | INFO | EPOCH 25 | BATCH 9000/18492 | loss=3.7608 | avg_loss=4.0867 | batch_time=0.27s | ETA_epoch=2581s
+2026-08-01 21:47:46 | INFO | EPOCH 25 | BATCH 10000/18492 | loss=4.4355 | avg_loss=4.0875 | batch_time=0.28s | ETA_epoch=2407s
+2026-08-01 21:47:47 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 21:52:35 | INFO | EPOCH 25 | BATCH 11000/18492 | loss=3.4497 | avg_loss=4.0899 | batch_time=0.29s | ETA_epoch=2152s
+2026-08-01 21:57:24 | INFO | EPOCH 25 | BATCH 12000/18492 | loss=4.0838 | avg_loss=4.0901 | batch_time=0.28s | ETA_epoch=1793s
+2026-08-01 22:02:13 | INFO | EPOCH 25 | BATCH 13000/18492 | loss=4.1198 | avg_loss=4.0906 | batch_time=0.31s | ETA_epoch=1690s
+2026-08-01 22:07:03 | INFO | EPOCH 25 | BATCH 14000/18492 | loss=4.2879 | avg_loss=4.0933 | batch_time=0.33s | ETA_epoch=1467s
+2026-08-01 22:11:52 | INFO | EPOCH 25 | BATCH 15000/18492 | loss=4.2049 | avg_loss=4.0941 | batch_time=0.28s | ETA_epoch=987s
+2026-08-01 22:11:53 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 22:16:41 | INFO | EPOCH 25 | BATCH 16000/18492 | loss=3.6590 | avg_loss=4.0935 | batch_time=0.29s | ETA_epoch=711s
+2026-08-01 22:21:30 | INFO | EPOCH 25 | BATCH 17000/18492 | loss=4.0817 | avg_loss=4.0940 | batch_time=0.28s | ETA_epoch=411s
+2026-08-01 22:26:19 | INFO | EPOCH 25 | BATCH 18000/18492 | loss=4.2026 | avg_loss=4.0949 | batch_time=0.29s | ETA_epoch=142s
+2026-08-01 22:28:42 | INFO | EPOCH 25 | BATCH 18492/18492 | loss=4.0298 | avg_loss=4.0954 | batch_time=0.28s | ETA_epoch=0s
+2026-08-01 22:28:42 | INFO | Epoch 25 train done | train_loss=4.0954 | time=5346.0s
+2026-08-01 22:28:42 | INFO | Computing validation loss ...
+2026-08-01 22:28:49 | INFO | val_loss=3.8331
+2026-08-01 22:28:49 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 22:29:09 | INFO |   BLEU-1 = 0.7562
+2026-08-01 22:29:09 | INFO |   BLEU-2 = 0.5927
+2026-08-01 22:29:09 | INFO |   BLEU-3 = 0.4283
+2026-08-01 22:29:09 | INFO |   BLEU-4 = 0.3115
+2026-08-01 22:29:09 | INFO |   METEOR = 0.4746
+2026-08-01 22:29:09 | INFO |   ROUGE-L = 0.4165
+2026-08-01 22:29:09 | INFO |   CIDEr-D = 1.0095
+2026-08-01 22:29:09 | INFO | No BLEU-4 improvement (3 / 10 patience)
+2026-08-01 22:29:10 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 22:29:11 | INFO | EPOCH COMPLETE 25 | train_loss=4.0954 val_loss=3.8331 BLEU-4=0.3115 (best=0.3218) | graphs updated in runs/
+2026-08-01 22:29:11 | INFO | ------------------------------------------------------------------------
+2026-08-01 22:29:11 | INFO | Starting epoch 26 / 79  (tf_ratio=0.591)
+2026-08-01 22:34:01 | INFO | EPOCH 26 | BATCH 1000/18492 | loss=4.1573 | avg_loss=4.0937 | batch_time=0.30s | ETA_epoch=5228s
+2026-08-01 22:38:51 | INFO | EPOCH 26 | BATCH 2000/18492 | loss=4.7790 | avg_loss=4.0891 | batch_time=0.27s | ETA_epoch=4532s
+2026-08-01 22:43:40 | INFO | EPOCH 26 | BATCH 3000/18492 | loss=3.9419 | avg_loss=4.0948 | batch_time=0.29s | ETA_epoch=4520s
+2026-08-01 22:48:30 | INFO | EPOCH 26 | BATCH 4000/18492 | loss=3.9756 | avg_loss=4.0995 | batch_time=0.28s | ETA_epoch=4089s
+2026-08-01 22:53:18 | INFO | EPOCH 26 | BATCH 5000/18492 | loss=3.7664 | avg_loss=4.0990 | batch_time=0.28s | ETA_epoch=3753s
+2026-08-01 22:53:19 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-01 22:58:07 | INFO | EPOCH 26 | BATCH 6000/18492 | loss=3.9534 | avg_loss=4.1036 | batch_time=0.29s | ETA_epoch=3625s
+2026-08-01 23:02:56 | INFO | EPOCH 26 | BATCH 7000/18492 | loss=4.0344 | avg_loss=4.1016 | batch_time=0.28s | ETA_epoch=3256s
+2026-08-01 23:07:45 | INFO | EPOCH 26 | BATCH 8000/18492 | loss=3.8224 | avg_loss=4.1036 | batch_time=0.28s | ETA_epoch=2934s
+2026-08-01 23:12:34 | INFO | EPOCH 26 | BATCH 9000/18492 | loss=4.1050 | avg_loss=4.1057 | batch_time=0.29s | ETA_epoch=2721s
+2026-08-01 23:17:23 | INFO | EPOCH 26 | BATCH 10000/18492 | loss=4.3369 | avg_loss=4.1048 | batch_time=0.29s | ETA_epoch=2504s
+2026-08-01 23:17:24 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-01 23:22:13 | INFO | EPOCH 26 | BATCH 11000/18492 | loss=4.0922 | avg_loss=4.1065 | batch_time=0.28s | ETA_epoch=2131s
+2026-08-01 23:27:02 | INFO | EPOCH 26 | BATCH 12000/18492 | loss=3.8645 | avg_loss=4.1074 | batch_time=0.28s | ETA_epoch=1786s
+2026-08-01 23:31:53 | INFO | EPOCH 26 | BATCH 13000/18492 | loss=4.0562 | avg_loss=4.1086 | batch_time=0.29s | ETA_epoch=1617s
+2026-08-01 23:36:41 | INFO | EPOCH 26 | BATCH 14000/18492 | loss=3.8549 | avg_loss=4.1089 | batch_time=0.28s | ETA_epoch=1246s
+2026-08-01 23:41:30 | INFO | EPOCH 26 | BATCH 15000/18492 | loss=4.5995 | avg_loss=4.1097 | batch_time=0.32s | ETA_epoch=1101s
+2026-08-01 23:41:31 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-01 23:46:20 | INFO | EPOCH 26 | BATCH 16000/18492 | loss=4.0331 | avg_loss=4.1105 | batch_time=0.29s | ETA_epoch=722s
+2026-08-01 23:51:09 | INFO | EPOCH 26 | BATCH 17000/18492 | loss=3.8961 | avg_loss=4.1117 | batch_time=0.29s | ETA_epoch=438s
+2026-08-01 23:55:59 | INFO | EPOCH 26 | BATCH 18000/18492 | loss=3.9899 | avg_loss=4.1133 | batch_time=0.29s | ETA_epoch=145s
+2026-08-01 23:58:21 | INFO | EPOCH 26 | BATCH 18492/18492 | loss=4.5679 | avg_loss=4.1132 | batch_time=0.36s | ETA_epoch=0s
+2026-08-01 23:58:21 | INFO | Epoch 26 train done | train_loss=4.1132 | time=5350.3s
+2026-08-01 23:58:21 | INFO | Computing validation loss ...
+2026-08-01 23:58:28 | INFO | val_loss=3.8380
+2026-08-01 23:58:28 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-01 23:58:48 | INFO |   BLEU-1 = 0.7468
+2026-08-01 23:58:48 | INFO |   BLEU-2 = 0.5835
+2026-08-01 23:58:48 | INFO |   BLEU-3 = 0.4239
+2026-08-01 23:58:48 | INFO |   BLEU-4 = 0.3096
+2026-08-01 23:58:48 | INFO |   METEOR = 0.4724
+2026-08-01 23:58:48 | INFO |   ROUGE-L = 0.4149
+2026-08-01 23:58:48 | INFO |   CIDEr-D = 0.9746
+2026-08-01 23:58:48 | INFO | No BLEU-4 improvement (4 / 10 patience)
+2026-08-01 23:58:49 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-01 23:58:49 | INFO | EPOCH COMPLETE 26 | train_loss=4.1132 val_loss=3.8380 BLEU-4=0.3096 (best=0.3218) | graphs updated in runs/
+2026-08-01 23:58:49 | INFO | ------------------------------------------------------------------------
+2026-08-01 23:58:49 | INFO | Starting epoch 27 / 79  (tf_ratio=0.580)
+2026-08-02 00:03:39 | INFO | EPOCH 27 | BATCH 1000/18492 | loss=4.0050 | avg_loss=4.0959 | batch_time=0.27s | ETA_epoch=4788s
+2026-08-02 00:08:28 | INFO | EPOCH 27 | BATCH 2000/18492 | loss=4.9434 | avg_loss=4.0937 | batch_time=0.31s | ETA_epoch=5036s
+2026-08-02 00:13:18 | INFO | EPOCH 27 | BATCH 3000/18492 | loss=3.8439 | avg_loss=4.1026 | batch_time=0.27s | ETA_epoch=4226s
+2026-08-02 00:18:08 | INFO | EPOCH 27 | BATCH 4000/18492 | loss=3.9729 | avg_loss=4.0983 | batch_time=0.29s | ETA_epoch=4164s
+2026-08-02 00:22:58 | INFO | EPOCH 27 | BATCH 5000/18492 | loss=4.7427 | avg_loss=4.1054 | batch_time=0.31s | ETA_epoch=4174s
+2026-08-02 00:22:59 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-02 00:27:48 | INFO | EPOCH 27 | BATCH 6000/18492 | loss=4.6048 | avg_loss=4.1062 | batch_time=0.29s | ETA_epoch=3564s
+2026-08-02 00:32:37 | INFO | EPOCH 27 | BATCH 7000/18492 | loss=4.0822 | avg_loss=4.1069 | batch_time=0.28s | ETA_epoch=3266s
+2026-08-02 00:37:26 | INFO | EPOCH 27 | BATCH 8000/18492 | loss=4.3428 | avg_loss=4.1095 | batch_time=0.30s | ETA_epoch=3160s
+2026-08-02 00:42:15 | INFO | EPOCH 27 | BATCH 9000/18492 | loss=4.1548 | avg_loss=4.1116 | batch_time=0.28s | ETA_epoch=2672s
+2026-08-02 00:47:05 | INFO | EPOCH 27 | BATCH 10000/18492 | loss=4.6345 | avg_loss=4.1121 | batch_time=0.30s | ETA_epoch=2572s
+2026-08-02 00:47:06 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-02 00:51:55 | INFO | EPOCH 27 | BATCH 11000/18492 | loss=3.8962 | avg_loss=4.1129 | batch_time=0.27s | ETA_epoch=2047s
+2026-08-02 00:56:43 | INFO | EPOCH 27 | BATCH 12000/18492 | loss=4.4291 | avg_loss=4.1127 | batch_time=0.30s | ETA_epoch=1967s
+2026-08-02 01:01:32 | INFO | EPOCH 27 | BATCH 13000/18492 | loss=4.6643 | avg_loss=4.1130 | batch_time=0.28s | ETA_epoch=1565s
+2026-08-02 01:06:22 | INFO | EPOCH 27 | BATCH 14000/18492 | loss=4.9124 | avg_loss=4.1136 | batch_time=0.29s | ETA_epoch=1323s
+2026-08-02 01:11:11 | INFO | EPOCH 27 | BATCH 15000/18492 | loss=3.5180 | avg_loss=4.1146 | batch_time=0.27s | ETA_epoch=944s
+2026-08-02 01:11:12 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-02 01:16:01 | INFO | EPOCH 27 | BATCH 16000/18492 | loss=3.7764 | avg_loss=4.1154 | batch_time=0.28s | ETA_epoch=705s
+2026-08-02 01:20:50 | INFO | EPOCH 27 | BATCH 17000/18492 | loss=4.5873 | avg_loss=4.1149 | batch_time=0.29s | ETA_epoch=434s
+2026-08-02 01:25:39 | INFO | EPOCH 27 | BATCH 18000/18492 | loss=3.7587 | avg_loss=4.1153 | batch_time=0.27s | ETA_epoch=135s
+2026-08-02 01:28:02 | INFO | EPOCH 27 | BATCH 18492/18492 | loss=4.1606 | avg_loss=4.1160 | batch_time=0.29s | ETA_epoch=0s
+2026-08-02 01:28:02 | INFO | Epoch 27 train done | train_loss=4.1160 | time=5352.5s
+2026-08-02 01:28:02 | INFO | Computing validation loss ...
+2026-08-02 01:28:08 | INFO | val_loss=3.8415
+2026-08-02 01:28:08 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-02 01:28:28 | INFO |   BLEU-1 = 0.7487
+2026-08-02 01:28:28 | INFO |   BLEU-2 = 0.5824
+2026-08-02 01:28:28 | INFO |   BLEU-3 = 0.4204
+2026-08-02 01:28:28 | INFO |   BLEU-4 = 0.3059
+2026-08-02 01:28:28 | INFO |   METEOR = 0.4720
+2026-08-02 01:28:28 | INFO |   ROUGE-L = 0.4191
+2026-08-02 01:28:28 | INFO |   CIDEr-D = 0.9789
+2026-08-02 01:28:28 | INFO | No BLEU-4 improvement (5 / 10 patience)
+2026-08-02 01:28:29 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-02 01:28:29 | INFO | EPOCH COMPLETE 27 | train_loss=4.1160 val_loss=3.8415 BLEU-4=0.3059 (best=0.3218) | graphs updated in runs/
+2026-08-02 01:28:29 | INFO | ------------------------------------------------------------------------
+2026-08-02 01:28:29 | INFO | Starting epoch 28 / 79  (tf_ratio=0.568)
+2026-08-02 01:33:18 | INFO | EPOCH 28 | BATCH 1000/18492 | loss=4.2156 | avg_loss=4.1012 | batch_time=0.27s | ETA_epoch=4737s
+2026-08-02 01:38:08 | INFO | EPOCH 28 | BATCH 2000/18492 | loss=4.4139 | avg_loss=4.1052 | batch_time=0.29s | ETA_epoch=4837s
+2026-08-02 01:42:57 | INFO | EPOCH 28 | BATCH 3000/18492 | loss=4.7025 | avg_loss=4.1081 | batch_time=0.29s | ETA_epoch=4492s
+2026-08-02 01:47:45 | INFO | EPOCH 28 | BATCH 4000/18492 | loss=4.2804 | avg_loss=4.1047 | batch_time=0.29s | ETA_epoch=4156s
+2026-08-02 01:52:36 | INFO | EPOCH 28 | BATCH 5000/18492 | loss=4.4037 | avg_loss=4.1104 | batch_time=0.28s | ETA_epoch=3829s
+2026-08-02 01:52:37 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-02 01:57:25 | INFO | EPOCH 28 | BATCH 6000/18492 | loss=4.3193 | avg_loss=4.1123 | batch_time=0.29s | ETA_epoch=3677s
+2026-08-02 02:02:15 | INFO | EPOCH 28 | BATCH 7000/18492 | loss=3.7054 | avg_loss=4.1141 | batch_time=0.28s | ETA_epoch=3231s
+2026-08-02 02:07:04 | INFO | EPOCH 28 | BATCH 8000/18492 | loss=3.6951 | avg_loss=4.1173 | batch_time=0.28s | ETA_epoch=2932s
+2026-08-02 02:11:53 | INFO | EPOCH 28 | BATCH 9000/18492 | loss=4.5201 | avg_loss=4.1179 | batch_time=0.28s | ETA_epoch=2676s
+2026-08-02 02:16:42 | INFO | EPOCH 28 | BATCH 10000/18492 | loss=4.5308 | avg_loss=4.1182 | batch_time=0.28s | ETA_epoch=2382s
+2026-08-02 02:16:43 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-02 02:21:33 | INFO | EPOCH 28 | BATCH 11000/18492 | loss=4.1405 | avg_loss=4.1187 | batch_time=0.29s | ETA_epoch=2203s
+2026-08-02 02:26:22 | INFO | EPOCH 28 | BATCH 12000/18492 | loss=3.8320 | avg_loss=4.1206 | batch_time=0.27s | ETA_epoch=1772s
+2026-08-02 02:31:12 | INFO | EPOCH 28 | BATCH 13000/18492 | loss=3.9886 | avg_loss=4.1223 | batch_time=0.28s | ETA_epoch=1511s
+2026-08-02 02:36:01 | INFO | EPOCH 28 | BATCH 14000/18492 | loss=3.8957 | avg_loss=4.1246 | batch_time=0.29s | ETA_epoch=1299s
+2026-08-02 02:40:50 | INFO | EPOCH 28 | BATCH 15000/18492 | loss=4.5836 | avg_loss=4.1243 | batch_time=0.28s | ETA_epoch=981s
+2026-08-02 02:40:52 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-02 02:45:40 | INFO | EPOCH 28 | BATCH 16000/18492 | loss=4.3857 | avg_loss=4.1248 | batch_time=0.28s | ETA_epoch=708s
+2026-08-02 02:50:31 | INFO | EPOCH 28 | BATCH 17000/18492 | loss=4.4153 | avg_loss=4.1264 | batch_time=0.28s | ETA_epoch=420s
+2026-08-02 02:55:20 | INFO | EPOCH 28 | BATCH 18000/18492 | loss=4.2197 | avg_loss=4.1265 | batch_time=0.30s | ETA_epoch=148s
+2026-08-02 02:57:42 | INFO | EPOCH 28 | BATCH 18492/18492 | loss=4.1389 | avg_loss=4.1266 | batch_time=0.28s | ETA_epoch=0s
+2026-08-02 02:57:42 | INFO | Epoch 28 train done | train_loss=4.1266 | time=5353.2s
+2026-08-02 02:57:42 | INFO | Computing validation loss ...
+2026-08-02 02:57:49 | INFO | val_loss=3.8544
+2026-08-02 02:57:49 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-02 02:58:09 | INFO |   BLEU-1 = 0.7476
+2026-08-02 02:58:09 | INFO |   BLEU-2 = 0.5816
+2026-08-02 02:58:09 | INFO |   BLEU-3 = 0.4179
+2026-08-02 02:58:09 | INFO |   BLEU-4 = 0.3009
+2026-08-02 02:58:09 | INFO |   METEOR = 0.4754
+2026-08-02 02:58:09 | INFO |   ROUGE-L = 0.4167
+2026-08-02 02:58:09 | INFO |   CIDEr-D = 0.9680
+2026-08-02 02:58:09 | INFO | No BLEU-4 improvement (6 / 10 patience)
+2026-08-02 02:58:10 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-02 02:58:11 | INFO | EPOCH COMPLETE 28 | train_loss=4.1266 val_loss=3.8544 BLEU-4=0.3009 (best=0.3218) | graphs updated in runs/
+2026-08-02 02:58:11 | INFO | ------------------------------------------------------------------------
+2026-08-02 02:58:11 | INFO | Starting epoch 29 / 79  (tf_ratio=0.557)
+2026-08-02 03:03:02 | INFO | EPOCH 29 | BATCH 1000/18492 | loss=4.1297 | avg_loss=4.1416 | batch_time=0.31s | ETA_epoch=5470s
+2026-08-02 03:07:50 | INFO | EPOCH 29 | BATCH 2000/18492 | loss=3.5327 | avg_loss=4.1212 | batch_time=0.28s | ETA_epoch=4578s
+2026-08-02 03:12:39 | INFO | EPOCH 29 | BATCH 3000/18492 | loss=3.8842 | avg_loss=4.1222 | batch_time=0.29s | ETA_epoch=4419s
+2026-08-02 03:17:28 | INFO | EPOCH 29 | BATCH 4000/18492 | loss=3.8628 | avg_loss=4.1248 | batch_time=0.29s | ETA_epoch=4143s
+2026-08-02 03:22:18 | INFO | EPOCH 29 | BATCH 5000/18492 | loss=4.6351 | avg_loss=4.1294 | batch_time=0.27s | ETA_epoch=3688s
+2026-08-02 03:22:19 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-02 03:27:09 | INFO | EPOCH 29 | BATCH 6000/18492 | loss=3.7378 | avg_loss=4.1328 | batch_time=0.27s | ETA_epoch=3368s
+2026-08-02 03:31:59 | INFO | EPOCH 29 | BATCH 7000/18492 | loss=4.1328 | avg_loss=4.1330 | batch_time=0.29s | ETA_epoch=3377s
+2026-08-02 03:36:49 | INFO | EPOCH 29 | BATCH 8000/18492 | loss=4.4134 | avg_loss=4.1351 | batch_time=0.29s | ETA_epoch=3070s
+2026-08-02 03:41:37 | INFO | EPOCH 29 | BATCH 9000/18492 | loss=4.4843 | avg_loss=4.1354 | batch_time=0.31s | ETA_epoch=2898s
+2026-08-02 03:46:27 | INFO | EPOCH 29 | BATCH 10000/18492 | loss=4.3439 | avg_loss=4.1356 | batch_time=0.28s | ETA_epoch=2358s
+2026-08-02 03:46:28 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-02 03:51:17 | INFO | EPOCH 29 | BATCH 11000/18492 | loss=3.8839 | avg_loss=4.1361 | batch_time=0.29s | ETA_epoch=2183s
+2026-08-02 03:56:07 | INFO | EPOCH 29 | BATCH 12000/18492 | loss=4.0222 | avg_loss=4.1379 | batch_time=0.30s | ETA_epoch=1928s
+2026-08-02 04:00:57 | INFO | EPOCH 29 | BATCH 13000/18492 | loss=4.2532 | avg_loss=4.1386 | batch_time=0.29s | ETA_epoch=1610s
+2026-08-02 04:05:47 | INFO | EPOCH 29 | BATCH 14000/18492 | loss=4.0798 | avg_loss=4.1397 | batch_time=0.29s | ETA_epoch=1285s
+2026-08-02 04:10:36 | INFO | EPOCH 29 | BATCH 15000/18492 | loss=3.5973 | avg_loss=4.1396 | batch_time=0.27s | ETA_epoch=954s
+2026-08-02 04:10:37 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-02 04:15:26 | INFO | EPOCH 29 | BATCH 16000/18492 | loss=3.5776 | avg_loss=4.1391 | batch_time=0.27s | ETA_epoch=683s
+2026-08-02 04:20:15 | INFO | EPOCH 29 | BATCH 17000/18492 | loss=4.3652 | avg_loss=4.1390 | batch_time=0.28s | ETA_epoch=425s
+2026-08-02 04:25:04 | INFO | EPOCH 29 | BATCH 18000/18492 | loss=3.8298 | avg_loss=4.1384 | batch_time=0.29s | ETA_epoch=144s
+2026-08-02 04:27:27 | INFO | EPOCH 29 | BATCH 18492/18492 | loss=3.5111 | avg_loss=4.1384 | batch_time=0.28s | ETA_epoch=0s
+2026-08-02 04:27:27 | INFO | Epoch 29 train done | train_loss=4.1384 | time=5355.9s
+2026-08-02 04:27:27 | INFO | Computing validation loss ...
+2026-08-02 04:27:33 | INFO | val_loss=3.8599
+2026-08-02 04:27:33 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-02 04:27:53 | INFO |   BLEU-1 = 0.7486
+2026-08-02 04:27:53 | INFO |   BLEU-2 = 0.5770
+2026-08-02 04:27:53 | INFO |   BLEU-3 = 0.4125
+2026-08-02 04:27:53 | INFO |   BLEU-4 = 0.2973
+2026-08-02 04:27:53 | INFO |   METEOR = 0.4588
+2026-08-02 04:27:53 | INFO |   ROUGE-L = 0.4191
+2026-08-02 04:27:53 | INFO |   CIDEr-D = 0.9750
+2026-08-02 04:27:53 | INFO | No BLEU-4 improvement (7 / 10 patience)
+2026-08-02 04:27:54 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-02 04:27:54 | INFO | EPOCH COMPLETE 29 | train_loss=4.1384 val_loss=3.8599 BLEU-4=0.2973 (best=0.3218) | graphs updated in runs/
+2026-08-02 04:27:54 | INFO | ------------------------------------------------------------------------
+2026-08-02 04:27:54 | INFO | Starting epoch 30 / 79  (tf_ratio=0.545)
+2026-08-02 04:32:45 | INFO | EPOCH 30 | BATCH 1000/18492 | loss=4.8176 | avg_loss=4.1232 | batch_time=0.31s | ETA_epoch=5411s
+2026-08-02 04:37:34 | INFO | EPOCH 30 | BATCH 2000/18492 | loss=4.4865 | avg_loss=4.1357 | batch_time=0.30s | ETA_epoch=4954s
+2026-08-02 04:42:24 | INFO | EPOCH 30 | BATCH 3000/18492 | loss=4.0993 | avg_loss=4.1361 | batch_time=0.28s | ETA_epoch=4291s
+2026-08-02 04:47:13 | INFO | EPOCH 30 | BATCH 4000/18492 | loss=4.7134 | avg_loss=4.1392 | batch_time=0.29s | ETA_epoch=4141s
+2026-08-02 04:52:03 | INFO | EPOCH 30 | BATCH 5000/18492 | loss=3.8289 | avg_loss=4.1408 | batch_time=0.28s | ETA_epoch=3738s
+2026-08-02 04:52:04 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-02 04:56:53 | INFO | EPOCH 30 | BATCH 6000/18492 | loss=4.7136 | avg_loss=4.1418 | batch_time=0.29s | ETA_epoch=3568s
+2026-08-02 05:01:43 | INFO | EPOCH 30 | BATCH 7000/18492 | loss=4.1714 | avg_loss=4.1426 | batch_time=0.29s | ETA_epoch=3362s
+2026-08-02 05:06:33 | INFO | EPOCH 30 | BATCH 8000/18492 | loss=3.9374 | avg_loss=4.1445 | batch_time=0.29s | ETA_epoch=2992s
+2026-08-02 05:11:23 | INFO | EPOCH 30 | BATCH 9000/18492 | loss=4.2219 | avg_loss=4.1464 | batch_time=0.31s | ETA_epoch=2951s
+2026-08-02 05:16:13 | INFO | EPOCH 30 | BATCH 10000/18492 | loss=3.4927 | avg_loss=4.1464 | batch_time=0.28s | ETA_epoch=2409s
+2026-08-02 05:16:14 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-02 05:21:03 | INFO | EPOCH 30 | BATCH 11000/18492 | loss=4.2138 | avg_loss=4.1470 | batch_time=0.29s | ETA_epoch=2183s
+2026-08-02 05:25:52 | INFO | EPOCH 30 | BATCH 12000/18492 | loss=3.8614 | avg_loss=4.1479 | batch_time=0.29s | ETA_epoch=1874s
+2026-08-02 05:30:43 | INFO | EPOCH 30 | BATCH 13000/18492 | loss=3.9462 | avg_loss=4.1482 | batch_time=0.29s | ETA_epoch=1616s
+2026-08-02 05:35:32 | INFO | EPOCH 30 | BATCH 14000/18492 | loss=4.4183 | avg_loss=4.1492 | batch_time=0.28s | ETA_epoch=1246s
+2026-08-02 05:40:22 | INFO | EPOCH 30 | BATCH 15000/18492 | loss=4.5426 | avg_loss=4.1491 | batch_time=0.30s | ETA_epoch=1032s
+2026-08-02 05:40:23 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-02 05:45:12 | INFO | EPOCH 30 | BATCH 16000/18492 | loss=4.4534 | avg_loss=4.1497 | batch_time=0.28s | ETA_epoch=709s
+2026-08-02 05:50:00 | INFO | EPOCH 30 | BATCH 17000/18492 | loss=4.1329 | avg_loss=4.1499 | batch_time=0.29s | ETA_epoch=427s
+2026-08-02 05:54:50 | INFO | EPOCH 30 | BATCH 18000/18492 | loss=4.9300 | avg_loss=4.1506 | batch_time=0.36s | ETA_epoch=179s
+2026-08-02 05:57:12 | INFO | EPOCH 30 | BATCH 18492/18492 | loss=3.9527 | avg_loss=4.1505 | batch_time=0.30s | ETA_epoch=0s
+2026-08-02 05:57:12 | INFO | Epoch 30 train done | train_loss=4.1505 | time=5357.9s
+2026-08-02 05:57:12 | INFO | Computing validation loss ...
+2026-08-02 05:57:19 | INFO | val_loss=3.8653
+2026-08-02 05:57:19 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-02 05:57:38 | INFO |   BLEU-1 = 0.7497
+2026-08-02 05:57:38 | INFO |   BLEU-2 = 0.5902
+2026-08-02 05:57:38 | INFO |   BLEU-3 = 0.4251
+2026-08-02 05:57:38 | INFO |   BLEU-4 = 0.3075
+2026-08-02 05:57:38 | INFO |   METEOR = 0.4706
+2026-08-02 05:57:38 | INFO |   ROUGE-L = 0.4160
+2026-08-02 05:57:38 | INFO |   CIDEr-D = 0.9797
+2026-08-02 05:57:38 | INFO | No BLEU-4 improvement (8 / 10 patience)
+2026-08-02 05:57:39 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-02 05:57:40 | INFO | EPOCH COMPLETE 30 | train_loss=4.1505 val_loss=3.8653 BLEU-4=0.3075 (best=0.3218) | graphs updated in runs/
+2026-08-02 05:57:40 | INFO | ------------------------------------------------------------------------
+2026-08-02 05:57:40 | INFO | Starting epoch 31 / 79  (tf_ratio=0.535)
+2026-08-02 06:02:29 | INFO | EPOCH 31 | BATCH 1000/18492 | loss=4.4065 | avg_loss=4.1116 | batch_time=0.29s | ETA_epoch=5128s
+2026-08-02 06:07:19 | INFO | EPOCH 31 | BATCH 2000/18492 | loss=3.6667 | avg_loss=4.1259 | batch_time=0.28s | ETA_epoch=4699s
+2026-08-02 06:12:09 | INFO | EPOCH 31 | BATCH 3000/18492 | loss=3.8798 | avg_loss=4.1297 | batch_time=0.28s | ETA_epoch=4283s
+2026-08-02 06:16:58 | INFO | EPOCH 31 | BATCH 4000/18492 | loss=4.5332 | avg_loss=4.1368 | batch_time=0.28s | ETA_epoch=4075s
+2026-08-02 06:21:48 | INFO | EPOCH 31 | BATCH 5000/18492 | loss=4.6051 | avg_loss=4.1396 | batch_time=0.31s | ETA_epoch=4140s
+2026-08-02 06:21:50 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-02 06:26:39 | INFO | EPOCH 31 | BATCH 6000/18492 | loss=4.0198 | avg_loss=4.1421 | batch_time=0.32s | ETA_epoch=3987s
+2026-08-02 06:31:29 | INFO | EPOCH 31 | BATCH 7000/18492 | loss=4.0583 | avg_loss=4.1432 | batch_time=0.30s | ETA_epoch=3489s
+2026-08-02 06:36:19 | INFO | EPOCH 31 | BATCH 8000/18492 | loss=3.6710 | avg_loss=4.1473 | batch_time=0.28s | ETA_epoch=2979s
+2026-08-02 06:41:09 | INFO | EPOCH 31 | BATCH 9000/18492 | loss=4.1812 | avg_loss=4.1499 | batch_time=0.31s | ETA_epoch=2910s
+2026-08-02 06:45:58 | INFO | EPOCH 31 | BATCH 10000/18492 | loss=4.0174 | avg_loss=4.1518 | batch_time=0.28s | ETA_epoch=2372s
+2026-08-02 06:46:00 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-02 06:50:49 | INFO | EPOCH 31 | BATCH 11000/18492 | loss=3.9639 | avg_loss=4.1533 | batch_time=0.28s | ETA_epoch=2061s
+2026-08-02 06:55:39 | INFO | EPOCH 31 | BATCH 12000/18492 | loss=4.0196 | avg_loss=4.1542 | batch_time=0.29s | ETA_epoch=1867s
+2026-08-02 07:00:29 | INFO | EPOCH 31 | BATCH 13000/18492 | loss=4.0236 | avg_loss=4.1549 | batch_time=0.28s | ETA_epoch=1537s
+2026-08-02 07:05:17 | INFO | EPOCH 31 | BATCH 14000/18492 | loss=4.3399 | avg_loss=4.1547 | batch_time=0.29s | ETA_epoch=1301s
+2026-08-02 07:10:08 | INFO | EPOCH 31 | BATCH 15000/18492 | loss=3.6314 | avg_loss=4.1558 | batch_time=0.27s | ETA_epoch=946s
+2026-08-02 07:10:09 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-02 07:14:58 | INFO | EPOCH 31 | BATCH 16000/18492 | loss=4.6096 | avg_loss=4.1560 | batch_time=0.31s | ETA_epoch=776s
+2026-08-02 07:19:47 | INFO | EPOCH 31 | BATCH 17000/18492 | loss=4.4345 | avg_loss=4.1567 | batch_time=0.32s | ETA_epoch=472s
+2026-08-02 07:24:38 | INFO | EPOCH 31 | BATCH 18000/18492 | loss=4.5271 | avg_loss=4.1581 | batch_time=0.31s | ETA_epoch=152s
+2026-08-02 07:27:00 | INFO | EPOCH 31 | BATCH 18492/18492 | loss=4.1238 | avg_loss=4.1590 | batch_time=0.30s | ETA_epoch=0s
+2026-08-02 07:27:00 | INFO | Epoch 31 train done | train_loss=4.1590 | time=5360.6s
+2026-08-02 07:27:00 | INFO | Computing validation loss ...
+2026-08-02 07:27:07 | INFO | val_loss=3.8647
+2026-08-02 07:27:07 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-02 07:27:27 | INFO |   BLEU-1 = 0.7472
+2026-08-02 07:27:27 | INFO |   BLEU-2 = 0.5851
+2026-08-02 07:27:27 | INFO |   BLEU-3 = 0.4240
+2026-08-02 07:27:27 | INFO |   BLEU-4 = 0.3107
+2026-08-02 07:27:27 | INFO |   METEOR = 0.4715
+2026-08-02 07:27:27 | INFO |   ROUGE-L = 0.4260
+2026-08-02 07:27:27 | INFO |   CIDEr-D = 0.9872
+2026-08-02 07:27:27 | INFO | No BLEU-4 improvement (9 / 10 patience)
+2026-08-02 07:27:28 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-02 07:27:28 | INFO | EPOCH COMPLETE 31 | train_loss=4.1590 val_loss=3.8647 BLEU-4=0.3107 (best=0.3218) | graphs updated in runs/
+2026-08-02 07:27:28 | INFO | ------------------------------------------------------------------------
+2026-08-02 07:27:28 | INFO | Starting epoch 32 / 79  (tf_ratio=0.524)
+2026-08-02 07:32:19 | INFO | EPOCH 32 | BATCH 1000/18492 | loss=3.9880 | avg_loss=4.1454 | batch_time=0.29s | ETA_epoch=5150s
+2026-08-02 07:37:09 | INFO | EPOCH 32 | BATCH 2000/18492 | loss=4.4410 | avg_loss=4.1423 | batch_time=0.29s | ETA_epoch=4839s
+2026-08-02 07:41:58 | INFO | EPOCH 32 | BATCH 3000/18492 | loss=3.8426 | avg_loss=4.1485 | batch_time=0.28s | ETA_epoch=4323s
+2026-08-02 07:46:49 | INFO | EPOCH 32 | BATCH 4000/18492 | loss=3.6632 | avg_loss=4.1513 | batch_time=0.29s | ETA_epoch=4133s
+2026-08-02 07:51:39 | INFO | EPOCH 32 | BATCH 5000/18492 | loss=4.3728 | avg_loss=4.1533 | batch_time=0.30s | ETA_epoch=4021s
+2026-08-02 07:51:40 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 5000)
+2026-08-02 07:56:30 | INFO | EPOCH 32 | BATCH 6000/18492 | loss=4.1077 | avg_loss=4.1527 | batch_time=0.29s | ETA_epoch=3658s
+2026-08-02 08:01:19 | INFO | EPOCH 32 | BATCH 7000/18492 | loss=3.5329 | avg_loss=4.1518 | batch_time=0.28s | ETA_epoch=3218s
+2026-08-02 08:06:10 | INFO | EPOCH 32 | BATCH 8000/18492 | loss=4.8141 | avg_loss=4.1511 | batch_time=0.28s | ETA_epoch=2895s
+2026-08-02 08:11:00 | INFO | EPOCH 32 | BATCH 9000/18492 | loss=3.7359 | avg_loss=4.1530 | batch_time=0.29s | ETA_epoch=2731s
+2026-08-02 08:15:51 | INFO | EPOCH 32 | BATCH 10000/18492 | loss=4.3119 | avg_loss=4.1560 | batch_time=0.28s | ETA_epoch=2338s
+2026-08-02 08:15:52 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 10000)
+2026-08-02 08:20:42 | INFO | EPOCH 32 | BATCH 11000/18492 | loss=3.7861 | avg_loss=4.1574 | batch_time=0.31s | ETA_epoch=2323s
+2026-08-02 08:25:31 | INFO | EPOCH 32 | BATCH 12000/18492 | loss=4.6786 | avg_loss=4.1586 | batch_time=0.29s | ETA_epoch=1853s
+2026-08-02 08:30:20 | INFO | EPOCH 32 | BATCH 13000/18492 | loss=4.3220 | avg_loss=4.1578 | batch_time=0.29s | ETA_epoch=1615s
+2026-08-02 08:35:10 | INFO | EPOCH 32 | BATCH 14000/18492 | loss=3.7410 | avg_loss=4.1606 | batch_time=0.29s | ETA_epoch=1322s
+2026-08-02 08:40:01 | INFO | EPOCH 32 | BATCH 15000/18492 | loss=3.8057 | avg_loss=4.1613 | batch_time=0.27s | ETA_epoch=960s
+2026-08-02 08:40:02 | INFO | Mid-epoch safety checkpoint saved → checkpoints/last_model.pth (batch 15000)
+2026-08-02 08:44:51 | INFO | EPOCH 32 | BATCH 16000/18492 | loss=4.2733 | avg_loss=4.1612 | batch_time=0.32s | ETA_epoch=798s
+2026-08-02 08:49:41 | INFO | EPOCH 32 | BATCH 17000/18492 | loss=4.7260 | avg_loss=4.1624 | batch_time=0.29s | ETA_epoch=428s
+2026-08-02 08:54:30 | INFO | EPOCH 32 | BATCH 18000/18492 | loss=3.8719 | avg_loss=4.1621 | batch_time=0.29s | ETA_epoch=141s
+2026-08-02 08:56:52 | INFO | EPOCH 32 | BATCH 18492/18492 | loss=3.6418 | avg_loss=4.1623 | batch_time=0.27s | ETA_epoch=0s
+2026-08-02 08:56:52 | INFO | Epoch 32 train done | train_loss=4.1623 | time=5364.1s
+2026-08-02 08:56:52 | INFO | Computing validation loss ...
+2026-08-02 08:56:59 | INFO | val_loss=3.8686
+2026-08-02 08:56:59 | INFO | Evaluating metrics (max_batches=50) ...
+2026-08-02 08:57:18 | INFO |   BLEU-1 = 0.7515
+2026-08-02 08:57:18 | INFO |   BLEU-2 = 0.5849
+2026-08-02 08:57:18 | INFO |   BLEU-3 = 0.4191
+2026-08-02 08:57:18 | INFO |   BLEU-4 = 0.2984
+2026-08-02 08:57:18 | INFO |   METEOR = 0.4656
+2026-08-02 08:57:18 | INFO |   ROUGE-L = 0.4177
+2026-08-02 08:57:18 | INFO |   CIDEr-D = 0.9669
+2026-08-02 08:57:18 | INFO | No BLEU-4 improvement (10 / 10 patience)
+2026-08-02 08:57:19 | INFO | Saved last checkpoint → checkpoints/last_model.pth
+2026-08-02 08:57:20 | INFO | EPOCH COMPLETE 32 | train_loss=4.1623 val_loss=3.8686 BLEU-4=0.2984 (best=0.3218) | graphs updated in runs/
+2026-08-02 08:57:20 | INFO | Early stopping at epoch 32 (no improvement for 10 epochs)
+2026-08-02 08:57:20 | INFO | ========================================================================
+2026-08-02 08:57:20 | INFO | Training finished with status=EARLY_STOPPED | best_bleu4=0.3218
+2026-08-02 08:57:20 | INFO | Checkpoints: checkpoints/{last_model.pth,best_model.pth}
+2026-08-02 08:57:20 | INFO | Graphs/logs: runs/
+2026-08-02 08:57:20 | INFO | ========================================================================

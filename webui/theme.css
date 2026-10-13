@@ -1,0 +1,561 @@
+/* ==========================================================================
+   Attention Field — visual theme for the image-captioning UI
+   Signature idea: the model pools every image onto a 7x7 grid before the
+   decoder ever looks at it (see EncoderCNN.enc_image_size in model.py).
+   That grid — and the sweep of attention across it — is the visual motif
+   used throughout: the dotted 7x7 mark in the corner of the dropzone, the
+   scanning gradient during generation, and the mono "readout" numerals.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-0: #080b14;
+  --bg-1: #0d1424;
+  --bg-2: #121b32;
+  --glass: rgba(255, 255, 255, 0.055);
+  --glass-strong: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-soft: rgba(255, 255, 255, 0.07);
+  --ink: #e9edf7;
+  --ink-dim: #96a2c2;
+  --ink-faint: #5c6789;
+  --cyan: #5eead4;
+  --amber: #ffb454;
+  --amber-soft: rgba(255, 180, 84, 0.16);
+  --cyan-soft: rgba(94, 234, 212, 0.16);
+  --danger: #ff8383;
+  --radius-lg: 22px;
+  --radius-md: 14px;
+  --radius-sm: 9px;
+  --shadow-deep: 0 30px 80px -30px rgba(0, 0, 0, 0.65);
+}
+
+/* ---------- base canvas ---------- */
+
+.gradio-container {
+  background:
+    radial-gradient(1100px 620px at 12% -8%, rgba(94, 234, 212, 0.10), transparent 60%),
+    radial-gradient(900px 560px at 100% 8%, rgba(255, 180, 84, 0.08), transparent 55%),
+    linear-gradient(180deg, var(--bg-0) 0%, var(--bg-1) 45%, var(--bg-2) 100%) !important;
+  min-height: 100vh;
+  font-family: 'Inter', -apple-system, sans-serif !important;
+  color: var(--ink) !important;
+}
+
+.gradio-container * {
+  scrollbar-width: thin;
+  scrollbar-color: var(--glass-border) transparent;
+}
+
+.app-shell {
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 8px 4px 48px !important;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: 46px 8px 30px;
+  position: relative;
+}
+
+.hero .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: var(--cyan-soft);
+  border: 1px solid rgba(94, 234, 212, 0.28);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.hero .eyebrow .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 10px 2px var(--cyan);
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: clamp(32px, 4.4vw, 50px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 14px;
+  background: linear-gradient(100deg, #ffffff 20%, var(--cyan) 55%, var(--amber) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  font-size: 15.5px;
+  color: var(--ink-dim);
+  max-width: 620px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.hero .status-line {
+  margin-top: 18px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  color: var(--ink-faint);
+}
+
+.hero .status-line b { color: var(--ink-dim); font-weight: 500; }
+
+/* ---------- architecture pipeline strip ---------- */
+
+.pipeline-strip {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 4px 8px 30px;
+}
+
+.pipeline-chip {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 18px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.pipeline-chip .chip-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.pipeline-chip .chip-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 16.5px;
+  color: var(--ink);
+}
+
+.pipeline-chip .chip-spec {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-faint);
+}
+
+.pipeline-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--amber);
+  padding: 0 2px;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 760px) {
+  .pipeline-strip { flex-direction: column; }
+  .pipeline-arrow { transform: rotate(90deg); padding: 2px 0; }
+}
+
+/* ---------- glass cards ---------- */
+
+.glass-card {
+  background: var(--glass) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-lg) !important;
+  backdrop-filter: blur(22px) saturate(140%);
+  -webkit-backdrop-filter: blur(22px) saturate(140%);
+  box-shadow: var(--shadow-deep), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  padding: 26px 26px 24px !important;
+}
+
+.panel-eyebrow {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase;
+  color: var(--ink-faint) !important;
+  margin: 0 0 14px !important;
+}
+
+/* ---------- upload dropzone ---------- */
+
+.upload-zone {
+  border-radius: var(--radius-md) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.upload-zone,
+.upload-zone > div,
+.upload-zone [data-testid="image"] {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1.5px dashed var(--glass-border) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+.upload-zone button.svelte-1oiin9d,
+.upload-zone .icon-wrap {
+  color: var(--ink-dim) !important;
+}
+
+/* the 7x7 grid mark — a direct callback to the encoder's pooled feature grid */
+.upload-zone::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 46px;
+  height: 46px;
+  background-image: radial-gradient(circle, rgba(94, 234, 212, 0.55) 1px, transparent 1.4px);
+  background-size: 6.4px 6.4px;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* scanning sweep shown while generating (toggled via .is-generating on app-shell) */
+.app-shell.is-generating .upload-zone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, rgba(94, 234, 212, 0.22) 48%, transparent 100%);
+  height: 40%;
+  animation: scan-sweep 1.6s ease-in-out infinite;
+}
+
+@keyframes scan-sweep {
+  0%   { transform: translateY(-20%); }
+  50%  { transform: translateY(160%); }
+  100% { transform: translateY(-20%); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* ---------- field labels ---------- */
+
+.field-label {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12.5px !important;
+  font-weight: 500 !important;
+  color: var(--ink-dim) !important;
+  margin: 22px 0 9px !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.field-label .hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ---------- segmented pill controls (beam size / attention toggle) ---------- */
+
+.pill-radio .wrap {
+  display: flex !important;
+  gap: 6px !important;
+  background: rgba(255, 255, 255, 0.035) !important;
+  border: 1px solid var(--glass-border-soft) !important;
+  border-radius: 999px !important;
+  padding: 4px !important;
+}
+
+.pill-radio label {
+  flex: 1 1 0 !important;
+  justify-content: center !important;
+  text-align: center !important;
+  border: none !important;
+  background: transparent !important;
+  border-radius: 999px !important;
+  padding: 8px 10px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 12.5px !important;
+  color: var(--ink-dim) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer;
+}
+
+.pill-radio label:hover {
+  color: var(--ink) !important;
+}
+
+.pill-radio label.selected,
+.pill-radio label:has(input:checked) {
+  background: linear-gradient(120deg, rgba(94, 234, 212, 0.22), rgba(255, 180, 84, 0.18)) !important;
+  color: var(--ink) !important;
+  box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.4);
+}
+
+.pill-radio input[type="radio"] {
+  display: none !important;
+}
+
+/* ---------- generate button ---------- */
+
+.btn-generate {
+  margin-top: 24px !important;
+  width: 100% !important;
+  border: none !important;
+  border-radius: var(--radius-sm) !important;
+  padding: 14px 20px !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.01em;
+  color: #06111a !important;
+  background: linear-gradient(100deg, var(--cyan) 0%, #8be9d3 45%, var(--amber) 100%) !important;
+  box-shadow: 0 14px 34px -12px rgba(94, 234, 212, 0.45) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+
+.btn-generate:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px -12px rgba(94, 234, 212, 0.6) !important;
+}
+
+.btn-generate:active {
+  transform: translateY(0);
+}
+
+/* ---------- dictionary / vocabulary search ---------- */
+
+.dict-toggle-row {
+  justify-content: flex-end !important;
+  margin: -6px 4px 4px !important;
+}
+
+.dict-toggle-row .btn-secondary {
+  width: auto !important;
+  margin-top: 0 !important;
+  padding: 9px 16px !important;
+}
+
+.dict-panel {
+  margin: 0 0 22px !important;
+}
+
+.dict-results {
+  margin-top: 16px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.dict-results p {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  color: var(--ink-dim) !important;
+  line-height: 2 !important;
+}
+
+.dict-results code {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 12px !important;
+  color: var(--cyan) !important;
+  background: var(--cyan-soft) !important;
+  border: 1px solid rgba(94, 234, 212, 0.22);
+  border-radius: 999px;
+  padding: 3px 10px !important;
+  margin: 2px 3px 2px 0;
+}
+
+.dict-results strong {
+  color: var(--ink) !important;
+}
+
+.embed-input-row {
+  gap: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+/* ---------- URL input mode ---------- */
+
+.url-box textarea,
+.url-box input {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1.5px dashed var(--glass-border) !important;
+  border-radius: var(--radius-md) !important;
+  color: var(--ink) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 13px !important;
+  padding: 12px 14px !important;
+}
+
+.url-box textarea::placeholder,
+.url-box input::placeholder {
+  color: var(--ink-faint) !important;
+}
+
+.btn-secondary {
+  margin-top: 10px !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: var(--radius-sm) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: var(--ink-dim) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  transition: all 0.15s ease !important;
+}
+
+.btn-secondary:hover {
+  color: var(--ink) !important;
+  border-color: rgba(94, 234, 212, 0.4) !important;
+  background: var(--cyan-soft) !important;
+}
+
+/* ---------- results panel ---------- */
+
+.caption-output {
+  min-height: 108px;
+}
+
+.caption-output p {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 500 !important;
+  font-size: clamp(22px, 2.4vw, 28px) !important;
+  line-height: 1.4 !important;
+  color: var(--ink) !important;
+  margin: 0 !important;
+}
+
+.caption-output p::before { content: "“"; color: var(--cyan); }
+.caption-output p::after  { content: "”"; color: var(--amber); }
+
+.caption-placeholder p {
+  color: var(--ink-faint) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+}
+.caption-placeholder p::before,
+.caption-placeholder p::after { content: ""; }
+
+.meta-line p {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 12px !important;
+  color: var(--ink-faint) !important;
+  margin: 14px 0 0 !important;
+  letter-spacing: 0.02em;
+}
+
+.attention-panel {
+  margin-top: 22px !important;
+  border-radius: var(--radius-md) !important;
+  overflow: hidden;
+  border: 1px solid var(--glass-border) !important;
+}
+
+.video-panel {
+  margin-top: 22px !important;
+}
+
+.video-panel video {
+  border-radius: var(--radius-md) !important;
+  background: #000 !important;
+}
+
+.speed-row {
+  align-items: center !important;
+  gap: 12px !important;
+  margin-top: 12px !important;
+}
+
+.speed-label p {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint) !important;
+  margin: 0 !important;
+  white-space: nowrap;
+}
+
+.speed-radio .wrap {
+  padding: 3px !important;
+}
+
+.speed-radio label {
+  padding: 6px 12px !important;
+  font-size: 11.5px !important;
+}
+
+/* ---------- example strip ---------- */
+
+.examples-eyebrow {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint) !important;
+  margin: 34px 4px 10px !important;
+}
+
+/* ---------- footer / model readout ---------- */
+
+.footer-readout {
+  margin-top: 26px;
+  padding: 16px 22px !important;
+  border-radius: var(--radius-md) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid var(--glass-border-soft) !important;
+}
+
+.footer-readout p, .footer-readout li {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 12px !important;
+  color: var(--ink-faint) !important;
+}
+
+.footer-readout b { color: var(--cyan) !important; font-weight: 500 !important; }
+
+/* ---------- accessibility ---------- */
+
+button:focus-visible,
+label:focus-within,
+input:focus-visible {
+  outline: 2px solid var(--cyan) !important;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero .eyebrow .dot,
+  .app-shell.is-generating .upload-zone::before {
+    animation: none !important;
+  }
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  .glass-card { padding: 20px !important; }
+  .hero { padding: 30px 4px 20px; }
+}

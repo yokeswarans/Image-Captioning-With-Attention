@@ -1,0 +1,14 @@
+# Local COCO images, annotations, archives, split files, and generated caches
+data/coco/
+
+# Model checkpoints and downloaded weights
+checkpoints/
+*.pth
+*.pt
+*.ckpt
+*.safetensors
+
+# Python bytecode and local virtual environments
+__pycache__/
+*.py[cod]
+.venv/

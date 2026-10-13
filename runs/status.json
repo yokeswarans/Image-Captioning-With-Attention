@@ -1,0 +1,7 @@
+{
+  "status": "EARLY_STOPPED",
+  "updated_at": "2026-08-02T08:57:20",
+  "pid": 4084546,
+  "best_bleu4": 0.3218,
+  "last_epoch": 32
+}

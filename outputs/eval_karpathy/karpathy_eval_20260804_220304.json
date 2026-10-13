@@ -1,0 +1,16 @@
+{
+  "checkpoint": "best_model.pth",
+  "beam_size": 5,
+  "num_images_evaluated": 5000,
+  "num_images_missing_locally": 0,
+  "scores": {
+    "BLEU-1": 0.7945856940682724,
+    "BLEU-2": 0.6510922043459665,
+    "BLEU-3": 0.5225931433188136,
+    "BLEU-4": 0.41645217200542334,
+    "METEOR": 0.29208022663421146,
+    "ROUGE-L": 0.5983877438432073,
+    "CIDEr": 1.275726593519776
+  },
+  "timestamp": "2026-08-04 22:03:04"
+}
