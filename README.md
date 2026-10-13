@@ -28,7 +28,15 @@ If PowerShell blocks environment activation, run the commands using `.\.venv\Scr
 
 ### 3. Download the pretrained weights from Hugging Face
 
-The checkpoint is hosted separately from the source code because it is larger than GitHub's per-file limit. Download it into the `checkpoints` directory:
+The checkpoint is hosted separately from the source code because it is larger than GitHub's per-file limit. You can download it manually in a browser or use the PowerShell command below.
+
+**Manual browser download**
+
+1. Open the [Hugging Face model files](https://huggingface.co/Yoki051202/Image-captioning-weights/tree/main) and select `best_model.pth`, or use the [direct download link](https://huggingface.co/Yoki051202/Image-captioning-weights/resolve/main/best_model.pth?download=true).
+2. Save the file as `best_model.pth`.
+3. In the cloned project folder, create a `checkpoints` folder if it does not already exist, then move or copy the downloaded file into it. The final path must be `Image-Captioning-With-Attention\checkpoints\best_model.pth`.
+
+**PowerShell download (alternative)**
 
 ```powershell
 New-Item -ItemType Directory -Force checkpoints | Out-Null
@@ -41,15 +49,21 @@ The downloaded file should be named `best_model.pth` and be approximately 424 Mi
 Get-Item checkpoints\best_model.pth | Select-Object Name, Length
 ```
 
-### 4. Launch the web app
+### 4. Run the project (two ways)
+
+Choose either the interactive web app or the command-line interface. Both load `checkpoints\best_model.pth`.
+
+**Option A: Interactive web app**
 
 ```powershell
 python app.py
 ```
 
-Open the local URL printed in the terminal (normally <http://127.0.0.1:7860>). Upload an image or provide an image URL, select a beam width, and press **Generate caption**. Attention overlays and videos are optional. The app loads `checkpoints\best_model.pth` automatically.
+Open the local URL printed in the terminal (normally <http://127.0.0.1:7860>). Upload an image or provide an image URL, select a beam width, and press **Generate caption**. Attention overlays and videos are optional.
 
-To try the command-line interface instead, replace `path\to\your-image.jpg` with an image file:
+**Option B: Command-line captioning**
+
+Replace `path\to\your-image.jpg` with the path to an image:
 
 ```powershell
 python predict.py --image "path\to\your-image.jpg"
